@@ -4,7 +4,7 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="text-foreground bg-background rounded-md border-t-1 border-foreground-200">
-      <div className="w-full mx-auto max-w-screen-xl p-4 flex flex-col gap-4 md:flex-row items-center justify-between">
+      <div className="w-full mx-auto p-4 flex flex-col gap-4 md:flex-row items-center justify-between">
         <span className="text-sm sm:text-center">
           <Link href="/" className="hover:underline" color="foreground">
             {process.env.NEXT_PUBLIC_SITE_NAME}

@@ -1,6 +1,6 @@
 import React from "react";
-import { LoginForm } from "./components/core/form/LoginForm";
-import { SignUpForm } from "./components/core/form/SignupForm";
+import { LoginForm } from "@/components/core/form/LoginForm";
+import { SignUpForm } from "@/components/core/form/SignupForm";
 import { GrInstall } from "react-icons/gr";
 import { TbRouteAltRight } from "react-icons/tb";
 import { SiNextdotjs } from "react-icons/si";

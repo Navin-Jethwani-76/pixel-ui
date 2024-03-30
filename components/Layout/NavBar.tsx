@@ -15,6 +15,7 @@ const NavBar = () => {
       <NextUiNavbar
         isBordered
         maxWidth="full"
+        position="static"
         className="border-b-1 border-foreground-200 rounded-md"
       >
         <NavbarContent>

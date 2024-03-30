@@ -1,11 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Button } from "@nextui-org/react";
+import { Button, ButtonProps } from "@nextui-org/react";
 import { useTheme } from "next-themes";
 import { MdOutlineWbSunny } from "react-icons/md";
 import { LuMoonStar } from "react-icons/lu";
 
-export function ThemeSwitcher() {
+export function ThemeSwitcher({ props }: { props?: ButtonProps }) {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
@@ -22,6 +22,7 @@ export function ThemeSwitcher() {
       onPress={() => {
         setTheme(theme === "dark" ? "light" : "dark");
       }}
+      {...props}
     >
       {theme == "light" && <LuMoonStar />}
       {theme == "dark" && <MdOutlineWbSunny />}
