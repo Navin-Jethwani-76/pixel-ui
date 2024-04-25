@@ -1,4 +1,4 @@
-import { Link } from "@nextui-org/react";
+import { Link } from "@/lib/nextui";
 import React from "react";
 
 const Footer = () => {

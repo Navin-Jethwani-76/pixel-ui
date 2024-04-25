@@ -6,7 +6,7 @@ import {
   CardHeader,
   Code,
   Snippet,
-} from "@nextui-org/react";
+} from "@/lib/nextui";
 import { FaGithub } from "react-icons/fa6";
 
 export default function Home() {

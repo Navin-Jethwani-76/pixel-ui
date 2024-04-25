@@ -5,6 +5,7 @@ import { Providers } from "@/app/providers";
 import NavBar from "@/components/Layout/NavBar";
 import Footer from "@/components/Layout/Footer";
 import SideBar from "@/components/Layout/SideBar";
+import { ScrollShadow } from "@/lib/nextui";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,12 +33,15 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           <NavBar />
-          {/* <div className="flex flex-row gap-2 h-dvh max-h-screen mb-6 lg:mb-0"> */}
-          <div className="grid grid-cols-12 gap-4">
-            <div className="sticky left-0 hidden lg:flex lg:flex-col w-full col-span-2 border-small px-1 py-2 rounded-small border-default-200 dark:border-default-100">
+          <div className="grid grid-cols-12 gap-4 h-screen">
+            <ScrollShadow
+              className="sticky left-0 hidden lg:flex lg:flex-col w-full col-span-2 border-small px-1 py-2 mb-2 rounded-small border-default-200 dark:border-default-100"
+              hideScrollBar
+              size={0}
+            >
               <SideBar />
-            </div>
-            <main className="flex min-h-screen col-span-12 lg:col-span-10 flex-col items-center justify-center p-4">
+            </ScrollShadow>
+            <main className="flex col-span-12 lg:col-span-10 flex-col items-center justify-center p-2 sm:pe-4">
               {children}
             </main>
           </div>
