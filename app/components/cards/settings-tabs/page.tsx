@@ -10,22 +10,55 @@ import {
   Tab,
   Switch,
   ScrollShadow,
+  SwitchProps,
 } from "@nextui-org/react";
 import UiComponent from "@/components/common/ui-component";
 import {
-  getClassName,
-  inputFields,
-} from "@/app/components/cards/account-details/page";
-import { SecuritySettingType } from "@/app/components/cards";
-import { CustomSettingComponent } from "@/app/components/cards/security-settings/page";
-import {
-  CustomSwitch,
-  Settings,
-} from "@/app/components/cards/notifications-settings/page";
+  NotificationSettingType,
+  SecuritySettingType,
+} from "@/app/components/cards";
 import { CiEdit } from "react-icons/ci";
 import { BiUserCircle } from "react-icons/bi";
 import { LuBellRing, LuFingerprint } from "react-icons/lu";
 import { ViewProps } from "@/app/components";
+import { inputFields, getClassName } from "@/app/components/cards";
+import { Settings } from "@/app/components/cards/notifications-settings";
+
+interface CustomSwitchType extends SwitchProps {
+  setting: NotificationSettingType;
+  switchColor: SwitchProps["color"];
+}
+
+const CustomSwitch = ({ setting, switchColor }: CustomSwitchType) => {
+  return (
+    <Switch
+      defaultSelected={setting.enabled}
+      color={switchColor}
+      classNames={{
+        base: "bg-content2 flex-row-reverse w-full max-w-full justify-between rounded-medium gap-2 p-4",
+      }}
+    >
+      <div className="flex flex-col">
+        <p className="text-medium">{setting.title}</p>
+        <p className="text-small text-default-500">{setting.description}</p>
+      </div>
+    </Switch>
+  );
+};
+
+const CustomSettingComponent = ({ item }: { item: SecuritySettingType }) => {
+  return (
+    <>
+      <div className="flex items-center justify-between gap-2 rounded-medium bg-content2 p-4">
+        <div>
+          <p>{item.title}</p>
+          <p className="text-small text-default-500">{item.description}</p>
+        </div>
+        {item.endContent}
+      </div>
+    </>
+  );
+};
 
 function SettingsTabs() {
   const [selected, setSelected] = useState("account");

@@ -42,13 +42,15 @@ const PropSideBar = ({
         setMaxWidth("375px");
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div className="hidden md:flex flex-col gap-3 items-center w-1/4">
       <div
-        className={`flex w-full gap-4 justify-${isPreviewEnabled ? "between" : "end"
-          } items-center max-w-[230px] px-2`}
+        className={`flex w-full gap-4 justify-${
+          isPreviewEnabled ? "between" : "end"
+        } items-center max-w-[230px] px-2`}
       >
         {isPreviewEnabled && (
           <Tabs
@@ -119,7 +121,9 @@ const PropSideBar = ({
         </Tooltip>
       </div>
       <ScrollShadow
-        className={`sticky left-0 hidden md:flex flex-col gap-4 w-full h-full max-w-[230px] ${isPreviewEnabled ? "max-h-[733px]" : "max-h-[738px]"} border-small px-2 py-4 rounded-small border-default-200 dark:border-default-100`}
+        className={`sticky left-0 hidden md:flex flex-col gap-4 w-full h-full max-w-[230px] ${
+          isPreviewEnabled ? "max-h-[733px]" : "max-h-[738px]"
+        } border-small px-2 py-4 rounded-small border-default-200 dark:border-default-100`}
         hideScrollBar
         size={0}
       >
