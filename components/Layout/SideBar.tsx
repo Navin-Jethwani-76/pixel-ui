@@ -8,7 +8,7 @@ import {
   ListboxSection,
 } from "@/lib/nextui";
 import { Components, Docs } from "@/config";
-import { useParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const SideBar = () => {
   const itemClasses = {
@@ -21,9 +21,11 @@ const SideBar = () => {
 
   const defaultExpandedKeys = [];
 
-  const params = useParams<{ parent: string; child: string }>();
-  if (params.parent) {
-    const openKey = Components.find((c) => c.key == params.parent)?.key;
+  const pathname = usePathname();
+  const pathArray = pathname.split("/components")
+  const newArr = pathArray[pathArray.length - 1].split("/")
+  if (newArr[newArr.length - 2]) {
+    const openKey = Components.find((c) => c.key == newArr[newArr.length - 2])?.key;
     defaultExpandedKeys.push(openKey);
   }
 
@@ -66,7 +68,7 @@ const SideBar = () => {
                       href={`/components/${obj.key}/${child.key}`}
                       key={child.key}
                       className={
-                        params.child == child.key ? "border-default" : ""
+                        newArr[newArr.length - 1] == child.key ? "border-default" : ""
                       }
                     >
                       {child.name}

@@ -31,20 +31,17 @@ const PropSideBar = ({
 }: PropSideBarProps) => {
   const isPreviewEnabled = currentView == "preview";
   const [copied, setCopied] = useState(false);
-  const [disabled, setDisabled] = useState(false);
+
   useEffect(() => {
     if (setMaxWidth) {
       if (window.innerWidth > 1024) {
         setMaxWidth("100%");
       } else if (window.innerWidth >= 768) {
         setMaxWidth("768px");
-        setDisabled(true);
       } else if (window.innerWidth >= 320) {
         setMaxWidth("375px");
-        setDisabled(true);
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -59,7 +56,6 @@ const PropSideBar = ({
             aria-label="View Tabs"
             defaultSelectedKey={"laptop"}
             size="sm"
-            isDisabled={disabled}
             onSelectionChange={(key) => {
               {
                 if (setMaxWidth)
@@ -123,7 +119,7 @@ const PropSideBar = ({
         </Tooltip>
       </div>
       <ScrollShadow
-        className="sticky left-0 hidden md:flex flex-col gap-4 w-full h-full max-w-[230px] max-h-[calc(100vh-4rem)] border-small px-2 py-4 rounded-small border-default-200 dark:border-default-100"
+        className={`sticky left-0 hidden md:flex flex-col gap-4 w-full h-full max-w-[230px] ${isPreviewEnabled ? "max-h-[733px]" : "max-h-[738px]"} border-small px-2 py-4 rounded-small border-default-200 dark:border-default-100`}
         hideScrollBar
         size={0}
       >

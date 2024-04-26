@@ -31,14 +31,13 @@ import {
     SocialButtonOptions,
     alignmentOptions,
     ViewProps,
-    LogoTitleProps,
-    SocialButtonsProps,
+    LogoTitleProps, SocialButtonsProps
 } from "@/app/components";
 
 const LogoTitle: React.FC<LogoTitleProps> = ({
     withLogo,
-    description,
     header,
+    description,
 }) => {
     return (
         <div className="flex flex-col gap-2 justify-center items-center w-full">
@@ -53,40 +52,37 @@ const LogoTitle: React.FC<LogoTitleProps> = ({
     );
 };
 
-interface LoginButtonProps extends ButtonProps {
+interface SignupButtonProps extends ButtonProps {
     fullWidth?: boolean;
 }
 
-const LoginButton: React.FC<LoginButtonProps> = ({ fullWidth, ...props }) => {
+const SignupButton: React.FC<SignupButtonProps> = ({ fullWidth, ...props }) => {
     return (
         <Button className="max-w-xs" fullWidth={fullWidth} {...props}>
-            Log In
+            Sign Up
         </Button>
     );
 };
 
-const SignUpLink: React.FC = () => {
+const LoginLink: React.FC = () => {
     return (
         <span>
-            Don&#39;t Have an Account? <Link href="#">Sign Up</Link>
+            Already have an account? <Link href="#">Log In</Link>
         </span>
     );
 };
 
-const ForgotPassword: React.FC = () => {
-    return <Link href="#">Forgor Password?</Link>;
-};
-
-const RememberMe: React.FC = () => {
+const TermsAgreeCheck: React.FC = () => {
     const [checked, setChecked] = useState(true);
     return (
         <>
             <Checkbox
-                name="remember-me"
+                name="agree-terms"
                 isSelected={checked}
                 onValueChange={setChecked}
             >
-                Remember Me
+                I agree with <Link href="#">Terms</Link> and{" "}
+                <Link href="#">Privacy Policy</Link>
             </Checkbox>
         </>
     );
@@ -95,22 +91,22 @@ const RememberMe: React.FC = () => {
 const Additional: React.FC = () => {
     return (
         <div className="flex w-full max-w-xs justify-between gap-4">
-            <RememberMe />
-            <ForgotPassword />
+            <TermsAgreeCheck />
         </div>
     );
 };
 
-const LoginForm = () => {
+const SignUpForm = () => {
+    // preview props
     const [withCardBg, setWithCardBg] = useState(true);
     const [withLogo, setWithLogo] = useState(true);
     const [isBtnFullWidth, setIsBtnFullWidth] = useState(true);
     const [withSocialLogin, setWithSocialLogin] = useState(true);
     const [withBackgroundImage, setWithBackgroundImage] = useState(false);
     const [maxWidth, setMaxWidth] = useState<ViewProps["current"]>("100%");
-    const [header, setHeader] = useState("Welcome Back");
+    const [header, setHeader] = useState("Welcome");
     const [description, setDescription] = useState(
-        "Log in to your account to continue"
+        "Create your account to get started"
     );
     const [inputVariant, setInputVariant] =
         useState<InputProps["variant"]>("bordered");
@@ -137,6 +133,8 @@ const LoginForm = () => {
             withBackgroundImage && "withBackgroundImage",
         ].filter(Boolean) as string[]; // Filter out false values
         setSelected(newSelected);
+
+        setMaxWidth("100%");
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -168,13 +166,14 @@ const LoginForm = () => {
                     variant="bordered"
                     className="max-w-xs"
                 />
+
                 <Select
                     label="Input Variant"
                     variant="bordered"
                     placeholder="Select a variant"
+                    defaultSelectedKeys={["bordered"]}
                     className="max-w-xs"
                     disallowEmptySelection
-                    selectedKeys={new Set([String(inputVariant)])}
                     onChange={(e) => {
                         setInputVariant(e.target.value as InputProps["variant"]);
                     }}
@@ -195,8 +194,8 @@ const LoginForm = () => {
                     variant="bordered"
                     placeholder="Select a color"
                     disallowEmptySelection
+                    defaultSelectedKeys={["default"]}
                     className="max-w-xs"
-                    selectedKeys={new Set([String(inputColor)])}
                     onChange={(e) => {
                         setInputColor(e.target.value as InputProps["color"]);
                     }}
@@ -213,8 +212,8 @@ const LoginForm = () => {
                     variant="bordered"
                     placeholder="Select a variant"
                     disallowEmptySelection
+                    defaultSelectedKeys={["solid"]}
                     className="max-w-xs"
-                    selectedKeys={new Set([String(btnVariant)])}
                     onChange={(e) => {
                         setBtnVariant(e.target.value as ButtonProps["variant"]);
                     }}
@@ -235,8 +234,8 @@ const LoginForm = () => {
                     variant="bordered"
                     placeholder="Select a color"
                     disallowEmptySelection
+                    defaultSelectedKeys={["primary"]}
                     className="max-w-xs"
-                    selectedKeys={new Set([String(btnColor)])}
                     onChange={(e) => {
                         setBtnColor(e.target.value as ButtonProps["color"]);
                     }}
@@ -253,8 +252,8 @@ const LoginForm = () => {
                     variant="bordered"
                     placeholder="Select a color"
                     disallowEmptySelection
+                    defaultSelectedKeys={["center"]}
                     className="max-w-xs"
-                    selectedKeys={new Set([String(alignment)])}
                     onChange={(e) => {
                         setAlignment(e.target.value as alignOptionProps["alignment"]);
                     }}
@@ -272,9 +271,8 @@ const LoginForm = () => {
                             label="Social Buttons Placement"
                             variant="bordered"
                             disallowEmptySelection
+                            defaultSelectedKeys={["bottom"]}
                             className="max-w-xs"
-                            value={socialBtnPlacement}
-                            selectedKeys={new Set([String(socialBtnPlacement)])}
                             onChange={(e) => {
                                 setSocialBtnPlacement(
                                     e.target.value as SocialButtonsProps["placement"]
@@ -295,8 +293,8 @@ const LoginForm = () => {
                             variant="bordered"
                             placeholder="Select a variant"
                             disallowEmptySelection
+                            defaultSelectedKeys={["bordered"]}
                             className="max-w-xs"
-                            selectedKeys={new Set([String(socialbtnVariant)])}
                             onChange={(e) => {
                                 setSocialBtnVariant(e.target.value as ButtonProps["variant"]);
                             }}
@@ -317,8 +315,8 @@ const LoginForm = () => {
                             variant="bordered"
                             placeholder="Select a color"
                             disallowEmptySelection
+                            defaultSelectedKeys={["default"]}
                             className="max-w-xs"
-                            selectedKeys={new Set([String(socialbtnColor)])}
                             onChange={(e) => {
                                 setSocialBtnColor(e.target.value as ButtonProps["color"]);
                             }}
@@ -370,7 +368,7 @@ const LoginForm = () => {
                 <EmailInput variant={inputVariant} color={inputColor} />
                 <PasswordInput variant={inputVariant} color={inputColor} />
                 <Additional />
-                <LoginButton
+                <SignupButton
                     color={btnColor}
                     variant={btnVariant}
                     fullWidth={isBtnFullWidth}
@@ -382,7 +380,7 @@ const LoginForm = () => {
                         color={socialbtnColor}
                     />
                 )}
-                <SignUpLink />
+                <LoginLink />
             </>
         );
     };
@@ -506,26 +504,27 @@ const Content = () => {
       <EmailInput variant="${inputVariant}" color="${inputColor}" />
       <PasswordInput variant="${inputVariant}" color="${inputColor}" />
       <div className="flex w-full max-w-xs justify-between gap-4">
-        <Checkbox name="remember">Remember Me</Checkbox>
-        <Link href="#">Forgor Password?</Link>
+        <Checkbox isRequired name="agree">
+          I agree with <Link href="#">Terms</Link> and <Link href="#">Privacy Policy</Link>
+        </Checkbox>
       </div>
-      <Button className="max-w-xs" type="submit" color="${btnColor}" variant="${btnVariant}" fullWidth={${isBtnFullWidth}}>Log In</Button>
+      <Button className="max-w-xs" type="submit" color="${btnColor}" variant="${btnVariant}" fullWidth={${isBtnFullWidth}}>Sign Up</Button>
       ${withSocialLogin && socialBtnPlacement == "bottom"
                         ? `<SocialBtnsContainer />`
                         : ``
                     }
-      <span>Don&#39;t Have an Account? <Link href="#">Sign Up</Link></span>
+      <span>Already have an account? <Link href="#">Log In</Link></span>
     </form>
   );
 };
 
-const Login = () => {
+const SignUp = () => {
   return (
     <div 
       className="flex w-full h-full rounded-md justify-${alignment} items-center gap-4"
     ${withBackgroundImage
                         ? `  style={{
-        backgroundImage: "url('/login-background.jpeg')", // add image with same name in /public dir.
+        backgroundImage: "url('/signUp-background.jpeg')", // add image with same name in /public dir.
         backgroundSize: "cover",
       }}
     >`
@@ -545,7 +544,7 @@ const Login = () => {
   );
 };
 
-export default Login;`,
+export default SignUp;`,
             },
             {
                 fileName: "EmailInput.jsx",
@@ -561,7 +560,7 @@ export default Login;`,
         <UiComponent
             preview={
                 <div
-                    className={`flex w-full h-full rounded-md justify-${alignment} border-1 border-default-200 dark:border-default-100 items-center gap-4`}
+                    className={`flex w-full h-full rounded-md justify-${alignment} border-1 border-default-600/10 items-center gap-4`}
                     style={
                         withBackgroundImage
                             ? {
@@ -581,18 +580,18 @@ export default Login;`,
                             </CardBody>
                         </Card>
                     ) : (
-                        <div className="w-full max-w-xs flex flex-col gap-4 justify-center items-center m-4">
+                        <div className="w-full max-w-xs flex flex-col gap-4 items-center">
                             <CardInnerContent />
                         </div>
                     )}
                 </div>
             }
             code={code}
-            sandBoxLink="https://codesandbox.io/p/devbox/login-5h7mtz?file=%2FApp.jsx"
+            sandBoxLink="https://codesandbox.io/p/devbox/signup-zrhx25?file=%2FApp.jsx"
             setMaxWidth={setMaxWidth}
             PreviewProps={PreviewProps}
         />
     );
 };
 
-export default LoginForm;
+export default SignUpForm;

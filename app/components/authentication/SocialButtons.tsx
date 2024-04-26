@@ -3,12 +3,7 @@ import { Button, ButtonProps } from "@nextui-org/react";
 import { FaGithub } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import Separator from "@/components/common/Separator";
-
-export interface SocialButtonsProps {
-    placement?: "top" | "bottom";
-    variant: ButtonProps["variant"];
-    color: ButtonProps["color"];
-}
+import { SocialButtonsProps } from "@/app/components";
 
 const StaticSocialBtn = ({ variant, color }: SocialButtonsProps) => {
     return (

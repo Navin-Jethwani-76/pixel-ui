@@ -33,9 +33,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           <NavBar />
-          <div className="grid grid-cols-12 gap-4 h-screen">
+          <div className="grid grid-cols-12 gap-4 h-full sm:h-[800px]">
             <ScrollShadow
-              className="sticky left-0 hidden lg:flex lg:flex-col w-full col-span-2 border-small px-1 py-2 mb-2 rounded-small border-default-200 dark:border-default-100"
+              className="sticky left-0 hidden lg:flex lg:flex-col w-full col-span-2 border-small px-1 py-2 rounded-small border-default-200 dark:border-default-100"
               hideScrollBar
               size={0}
             >

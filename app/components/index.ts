@@ -4,7 +4,12 @@ import {
     InputProps,
     SwitchProps,
 } from "@nextui-org/react";
-import { SocialButtonsProps } from "./SocialButtons";
+
+export interface SocialButtonsProps {
+    placement?: "top" | "bottom";
+    variant: ButtonProps["variant"];
+    color: ButtonProps["color"];
+}
 
 export interface alignOptionProps {
     alignment: "start" | "center" | "end";
