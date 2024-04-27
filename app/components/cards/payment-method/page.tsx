@@ -22,10 +22,7 @@ import {
   btnColorOptions,
   btnVariantOptions,
 } from "@/app/components";
-import dynamic from "next/dynamic";
-const UiComponent = dynamic(() => import("@/components/common/ui-component"), {
-  ssr: false,
-});
+import UiComponent from "@/lib/ui";
 import { RadioOptionType } from "@/app/components/cards";
 import { BiLogoVisa } from "react-icons/bi";
 import { RiMastercardLine } from "react-icons/ri";

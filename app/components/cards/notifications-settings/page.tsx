@@ -19,10 +19,7 @@ import {
   btnVariantOptions,
   switchColorOptions,
 } from "@/app/components";
-import dynamic from "next/dynamic";
-const UiComponent = dynamic(() => import("@/components/common/ui-component"), {
-  ssr: false,
-});
+import UiComponent from "@/lib/ui";
 import { NotificationSettingType } from "@/app/components/cards";
 import { Settings } from "@/app/components/cards/notifications-settings";
 
@@ -33,20 +30,13 @@ interface CustomSwitchType extends SwitchProps {
 
 const CustomSwitch = ({ setting, switchColor }: CustomSwitchType) => {
   return (
-    <Switch
-      defaultSelected={setting.enabled}
-      color={switchColor}
-      classNames={{
-        base: cn(
-          "bg-content2 flex-row-reverse w-full max-w-full justify-between rounded-medium gap-2 p-4"
-        ),
-      }}
-    >
+    <div className="flex items-center justify-between gap-2 rounded-medium bg-content2 p-4">
       <div className="flex flex-col">
         <p className="text-medium">{setting.title}</p>
         <p className="text-small text-default-500">{setting.description}</p>
       </div>
-    </Switch>
+      <Switch defaultSelected={setting.enabled} color={switchColor}></Switch>
+    </div>
   );
 };
 
@@ -210,7 +200,11 @@ function NotificationsSettings() {
               <p className="text-large">{header}</p>
               <p className="text-small text-default-500">{description}</p>
             </div>
-            <ScrollShadow className="w-full max-h-[500px]" hideScrollBar>
+            <ScrollShadow
+              className="w-full max-h-[500px]"
+              hideScrollBar
+              size={0}
+            >
               <div className="flex flex-col gap-2">
                 {Settings.map((item, index) => {
                   return (
@@ -249,18 +243,13 @@ import { Settings } from "./data";
 
 const CustomSwitch = ({ setting }) => {
   return (
-    <Switch
-      defaultSelected={setting.enabled}
-      color="${switchColor}"
-      classNames={{
-        base: "bg-content2 flex-row-reverse w-full max-w-full justify-between rounded-medium gap-2 p-4",
-      }}
-    >
+    <div className="flex items-center justify-between gap-2 rounded-medium bg-content2 p-4">
       <div className="flex flex-col">
         <p className="text-medium">{setting.title}</p>
         <p className="text-small text-default-500">{setting.description}</p>
       </div>
-    </Switch>
+      <Switch defaultSelected={setting.enabled} color="${switchColor}"></Switch>
+    </div>
   );
 };
 

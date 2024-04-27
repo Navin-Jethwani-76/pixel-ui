@@ -15,10 +15,7 @@ import {
   Skeleton,
 } from "@/lib/nextui";
 import { ViewProps } from "@/app/components";
-import dynamic from "next/dynamic";
-const UiComponent = dynamic(() => import("@/components/common/ui-component"), {
-  ssr: false,
-});
+import UiComponent from "@/lib/ui";
 import {
   Product,
   ProductListOptions,

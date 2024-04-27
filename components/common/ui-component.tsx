@@ -1,10 +1,7 @@
 "use client";
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Tabs, Tab, ScrollShadow, Button, Link, Tooltip } from "@/lib/nextui";
-import dynamic from "next/dynamic";
-const PropSideBar = dynamic(() => import("@/components/Layout/PropSideBar"), {
-  ssr: false,
-});
+import PropSideBar from "@/components/Layout/PropSideBar";
 import "@uiw/react-textarea-code-editor/dist.css";
 import CodeEditor from "@uiw/react-textarea-code-editor";
 import { FcNext, FcPrevious } from "react-icons/fc";

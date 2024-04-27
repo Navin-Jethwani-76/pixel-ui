@@ -41,7 +41,7 @@ export default function RootLayout({
             >
               <SideBar />
             </ScrollShadow>
-            <main className="flex col-span-12 lg:col-span-10 flex-col items-center justify-center p-2 sm:pe-4">
+            <main className="flex col-span-12 lg:col-span-10 flex-col items-center justify-center p-2 sm:pe-4 min-h-screen">
               {children}
             </main>
           </div>

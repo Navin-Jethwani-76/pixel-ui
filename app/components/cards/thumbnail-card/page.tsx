@@ -10,10 +10,7 @@ import {
   SelectItem,
   ButtonProps,
 } from "@/lib/nextui";
-import dynamic from "next/dynamic";
-const UiComponent = dynamic(() => import("@/components/common/ui-component"), {
-  ssr: false,
-});
+import UiComponent from "@/lib/ui";
 import {
   ViewProps,
   btnColorOptions,

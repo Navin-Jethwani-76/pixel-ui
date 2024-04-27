@@ -19,10 +19,7 @@ import {
   inputColorOptions,
   inputVariantOptions,
 } from "@/app/components";
-import dynamic from "next/dynamic";
-const UiComponent = dynamic(() => import("@/components/common/ui-component"), {
-  ssr: false,
-});
+import UiComponent from "@/lib/ui";
 import { FaCheck } from "react-icons/fa6";
 import { IoCloseCircleOutline } from "react-icons/io5";
 

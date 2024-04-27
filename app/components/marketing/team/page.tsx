@@ -17,10 +17,7 @@ import {
   btnVariantOptions,
 } from "@/app/components";
 import { Member } from "@/app/components/marketing/team";
-import dynamic from "next/dynamic";
-const UiComponent = dynamic(() => import("@/components/common/ui-component"), {
-  ssr: false,
-});
+import UiComponent from "@/lib/ui";
 import { FaXTwitter, FaGithub, FaLinkedin } from "react-icons/fa6";
 import { data } from "./code";
 

@@ -14,11 +14,6 @@ const Footer = () => {
         <ul className="flex flex-wrap items-center gap-4 text-sm font-medium sm:mt-0">
           <li>
             <Link href="#" className="hover:underline" color="foreground">
-              About
-            </Link>
-          </li>
-          <li>
-            <Link href="#" className="hover:underline" color="foreground">
               Privacy Policy
             </Link>
           </li>

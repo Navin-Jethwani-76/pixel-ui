@@ -14,10 +14,7 @@ import {
 } from "@/lib/nextui";
 import Logo from "@/components/common/Logo";
 import { ViewProps } from "@/app/components";
-import dynamic from "next/dynamic";
-const UiComponent = dynamic(() => import("@/components/common/ui-component"), {
-  ssr: false,
-});
+import UiComponent from "@/lib/ui";
 import {
   FooterColumn,
   FooterType,

@@ -18,10 +18,7 @@ import {
   btnVariantOptions,
   inputVariantOptions,
 } from "@/app/components";
-import dynamic from "next/dynamic";
-const UiComponent = dynamic(() => import("@/components/common/ui-component"), {
-  ssr: false,
-});
+import UiComponent from "@/lib/ui";
 
 function FieldsetCard() {
   const [maxWidth, setMaxWidth] = useState<ViewProps["current"]>("100%");

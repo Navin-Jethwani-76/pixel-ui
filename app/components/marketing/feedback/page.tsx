@@ -24,10 +24,7 @@ import {
   FeedbackTypeOptions,
 } from "@/app/components/marketing/feedback";
 import { ViewProps } from "@/app/components";
-import dynamic from "next/dynamic";
-const UiComponent = dynamic(() => import("@/components/common/ui-component"), {
-  ssr: false,
-});
+import UiComponent from "@/lib/ui";
 import { LuFrown, LuMeh, LuSmile, LuSmilePlus } from "react-icons/lu";
 import { RatingRadioGroupCode } from "@/app/components/marketing/feedback/code";
 

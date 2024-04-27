@@ -3,10 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Card, CardBody, Checkbox, CheckboxGroup } from "@/lib/nextui";
 import { ViewProps } from "@/app/components";
 import { CardsContentsType } from "@/app/components/cards";
-import dynamic from "next/dynamic";
-const UiComponent = dynamic(() => import("@/components/common/ui-component"), {
-  ssr: false,
-});
+import UiComponent from "@/lib/ui";
 import {
   MdDeleteOutline,
   MdOutlineAirplanemodeInactive,

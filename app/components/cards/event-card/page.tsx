@@ -16,10 +16,7 @@ import {
   btnColorOptions,
   btnVariantOptions,
 } from "@/app/components";
-import dynamic from "next/dynamic";
-const UiComponent = dynamic(() => import("@/components/common/ui-component"), {
-  ssr: false,
-});
+import UiComponent from "@/lib/ui";
 import Logo from "@/components/common/Logo";
 
 const EventAnnouncement = () => {

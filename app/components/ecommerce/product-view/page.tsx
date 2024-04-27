@@ -14,10 +14,7 @@ import {
   cn,
   useRadio,
 } from "@/lib/nextui";
-import dynamic from "next/dynamic";
-const UiComponent = dynamic(() => import("@/components/common/ui-component"), {
-  ssr: false,
-});
+import UiComponent from "@/lib/ui";
 import { LiaShippingFastSolid } from "react-icons/lia";
 import { IoHeartOutline } from "react-icons/io5";
 import { ViewProps } from "@/app/components";

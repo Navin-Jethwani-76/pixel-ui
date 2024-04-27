@@ -25,10 +25,7 @@ import {
   Progress,
 } from "@/lib/nextui";
 import { ViewProps } from "@/app/components";
-import dynamic from "next/dynamic";
-const UiComponent = dynamic(() => import("@/components/common/ui-component"), {
-  ssr: false,
-});
+import UiComponent from "@/lib/ui";
 import { Products } from "@/app/components/ecommerce/product-list/data";
 import {
   CheckoutOptions,

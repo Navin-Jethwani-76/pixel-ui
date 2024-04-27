@@ -20,10 +20,7 @@ import {
   Textarea,
   RadioProps,
 } from "@/lib/nextui";
-import dynamic from "next/dynamic";
-const UiComponent = dynamic(() => import("@/components/common/ui-component"), {
-  ssr: false,
-});
+import UiComponent from "@/lib/ui";
 import { ViewProps } from "@/app/components";
 import { ReviewType } from "@/app/components/ecommerce/reviews";
 import { FaSearch } from "react-icons/fa";

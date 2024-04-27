@@ -33,10 +33,7 @@ import {
   DropdownItem,
 } from "@/lib/nextui";
 import { ViewProps } from "@/app/components";
-import dynamic from "next/dynamic";
-const UiComponent = dynamic(() => import("@/components/common/ui-component"), {
-  ssr: false,
-});
+import UiComponent from "@/lib/ui";
 import { FaLink, FaRegCreditCard } from "react-icons/fa6";
 import { IoAddCircleOutline } from "react-icons/io5";
 import { BsThreeDots } from "react-icons/bs";
