@@ -11,14 +11,17 @@ import {
   Select,
   SelectItem,
   User,
-} from "@nextui-org/react";
+} from "@/lib/nextui";
 import {
   ViewProps,
   btnColorOptions,
   btnVariantOptions,
   inputVariantOptions,
 } from "@/app/components";
-import UiComponent from "@/components/common/ui-component";
+import dynamic from "next/dynamic";
+const UiComponent = dynamic(() => import("@/components/common/ui-component"), {
+  ssr: false,
+});
 import { inputFields, getClassName } from "@/app/components/cards";
 
 function AccountDetails() {

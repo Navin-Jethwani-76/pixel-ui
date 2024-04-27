@@ -9,10 +9,12 @@ import {
   Radio,
   RadioGroup,
   RadioProps,
-  cn,
-} from "@nextui-org/react";
+} from "@/lib/nextui";
 import { ViewProps } from "@/app/components";
-import UiComponent from "@/components/common/ui-component";
+import dynamic from "next/dynamic";
+const UiComponent = dynamic(() => import("@/components/common/ui-component"), {
+  ssr: false,
+});
 import { IconType } from "react-icons";
 import { RadioOptionType } from "@/app/components/cards";
 import { LuBox } from "react-icons/lu";
@@ -131,12 +133,12 @@ function SelectPlan() {
             maxWidth: maxWidth,
           }}
         >
-          <Card>
-            <CardBody
-              className={`flex flex-col items-center gap-2 w-full ${
-                maxWidth === "375px" ? "max-w-[360px]" : "max-w-sm"
-              }`}
-            >
+          <Card
+            className={`w-full ${
+              maxWidth === "375px" ? "max-w-[360px]" : "max-w-sm"
+            }`}
+          >
+            <CardBody className={`flex flex-col items-center gap-2 w-full`}>
               <div className="flex flex-col w-full">
                 <h4 className="text-large font-medium">{cardHeading}</h4>
                 <p className="text-tiny text-default-400">{cardDescription}</p>
@@ -192,7 +194,7 @@ const CustomRadio = (props) => {
     <Radio
       {...otherProps}
       classNames={{
-        base: "group relative tap-highlight-transparent inline-flex m-0 px-2 py-4 max-w-[100%] items-center justify-between flex-row-reverse w-full cursor-pointer rounded-lg 3 border-default-100 data-[selected=true]:border-secondary data-[selected=true]:bg-secondary-50",
+        base: "group relative tap-highlight-transparent inline-flex m-0 p-2 max-w-[100%] items-center justify-between flex-row-reverse w-full cursor-pointer rounded-lg 3 border-default-100 data-[selected=true]:border-secondary data-[selected=true]:bg-secondary-50",
       }}
       color="secondary"
     >

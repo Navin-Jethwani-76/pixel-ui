@@ -1,5 +1,5 @@
 "use client";
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import {
   Button,
   ScrollShadow,
@@ -13,7 +13,7 @@ import { PiCodesandboxLogo } from "react-icons/pi";
 import { FaBug, FaCheck, FaGithub, FaRegCopy } from "react-icons/fa6";
 
 interface PropSideBarProps {
-  PreviewProps: () => React.JSX.Element;
+  PreviewProps: () => React.JSX.Element | null;
   setMaxWidth?: Dispatch<SetStateAction<"375px" | "768px" | "100%">>;
   currentView: string;
   sandBoxLink?: string;
@@ -32,19 +32,6 @@ const PropSideBar = ({
   const isPreviewEnabled = currentView == "preview";
   const [copied, setCopied] = useState(false);
 
-  useEffect(() => {
-    if (setMaxWidth) {
-      if (window.innerWidth > 1024) {
-        setMaxWidth("100%");
-      } else if (window.innerWidth >= 768) {
-        setMaxWidth("768px");
-      } else if (window.innerWidth >= 320) {
-        setMaxWidth("375px");
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return (
     <div className="hidden md:flex flex-col gap-3 items-center w-1/4">
       <div
@@ -56,7 +43,13 @@ const PropSideBar = ({
           <Tabs
             variant="bordered"
             aria-label="View Tabs"
-            defaultSelectedKey={"laptop"}
+            defaultSelectedKey={
+              window.innerWidth > 1024
+                ? "laptop"
+                : window.innerWidth >= 768
+                ? "tablet"
+                : "mobile"
+            }
             size="sm"
             onSelectionChange={(key) => {
               {
@@ -73,7 +66,11 @@ const PropSideBar = ({
           >
             <Tab key={"mobile"} title={<FaMobileAlt />} />
             <Tab key={"tablet"} title={<FaTabletAlt />} />
-            <Tab key={"laptop"} title={<FaLaptopCode />} />
+            <Tab
+              key={"laptop"}
+              title={<FaLaptopCode />}
+              isDisabled={window.innerWidth <= 1024}
+            />
           </Tabs>
         )}
         {!isPreviewEnabled && (
@@ -120,15 +117,17 @@ const PropSideBar = ({
           </Button>
         </Tooltip>
       </div>
-      <ScrollShadow
-        className={`sticky left-0 hidden md:flex flex-col gap-4 w-full h-full max-w-[230px] ${
-          isPreviewEnabled ? "max-h-[733px]" : "max-h-[738px]"
-        } border-small px-2 py-4 rounded-small border-default-200 dark:border-default-100`}
-        hideScrollBar
-        size={0}
-      >
-        {PreviewProps()}
-      </ScrollShadow>
+      {PreviewProps && (
+        <ScrollShadow
+          className={`sticky left-0 hidden md:flex flex-col gap-4 w-full h-full max-w-[230px] ${
+            isPreviewEnabled ? "max-h-[733px]" : "max-h-[738px]"
+          } border-small px-2 py-4 rounded-small border-default-200 dark:border-default-100`}
+          hideScrollBar
+          size={0}
+        >
+          {PreviewProps()}
+        </ScrollShadow>
+      )}
     </div>
   );
 };

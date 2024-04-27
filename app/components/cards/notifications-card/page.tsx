@@ -1,158 +1,120 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import {
-  // Avatar,
+  Avatar,
   Button,
   Card,
   CardBody,
   Checkbox,
   CheckboxGroup,
-  // Chip,
-  // Link,
-  // ScrollShadow,
-  // Tab,
-  // Tabs,
+  Chip,
+  Link,
+  ScrollShadow,
+  Tab,
+  Tabs,
 } from "@/lib/nextui";
 import { ViewProps } from "@/app/components";
-import UiComponent from "@/components/common/ui-component";
-// import { NotificationsType } from "@/app/components/cards";
-// import { FaFileAlt } from "react-icons/fa";
+import dynamic from "next/dynamic";
+const UiComponent = dynamic(() => import("@/components/common/ui-component"), {
+  ssr: false,
+});
+import { NotificationsType } from "@/app/components/cards";
+import { FaFileAlt } from "react-icons/fa";
 
-// const Notifications: NotificationsType[] = [
-//   {
-//     title: "Tony Reichert requested to join your Acme organization.",
-//     description: "2 hours ago",
-//     user: <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024d" />,
-//     type: "unread",
-//     footer: (
-//       <div className="flex gap-2">
-//         <Button size="sm" color="primary">
-//           Accept
-//         </Button>
-//         <Button size="sm" color="default" variant="flat">
-//           Decline
-//         </Button>
-//       </div>
-//     ),
-//   },
-//   {
-//     title: "Ben Berman modified the Brand logo file.",
-//     description: "2 hours ago",
-//     user: <Avatar src="https://i.pravatar.cc/150?u=a04258114e29026302d" />,
-//     type: "unread",
-//     footer: (
-//       <Link href="#" color="foreground" className="flex gap-2 items-center">
-//         <FaFileAlt className="text-secondary" size={24} />
-//         <div className="flex flex-col">
-//           <strong className="text-small font-medium">
-//             Brand_Logo_v1.2.fig
-//           </strong>
-//           <p className="text-tiny text-default-400">3.4 MB</p>
-//         </div>
-//       </Link>
-//     ),
-//   },
-//   {
-//     title: "Jane Doe liked your post.",
-//     description: "2 hours ago",
-//     user: <Avatar src="https://i.pravatar.cc/150?u=a04258114e29026702d" />,
-//     type: "unread",
-//   },
-//   {
-//     title: "John Smith started following you.",
-//     description: "2 hours ago",
-//     user: <Avatar src="https://i.pravatar.cc/150?u=a04258114e29026708c" />,
-//     type: "archived",
-//   },
-//   {
-//     title: "Jacob Jones mentioned you in a post.",
-//     description: "2 hours ago",
-//     user: <Avatar src="https://i.pravatar.cc/150?u=a04258a2462d826712d" />,
-//     type: "archived",
-//   },
-// ];
+const Notifications: NotificationsType[] = [
+  {
+    title: "Tony Reichert requested to join your Acme organization.",
+    description: "2 hours ago",
+    user: <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024d" />,
+    type: "unread",
+    footer: (
+      <div className="flex gap-2">
+        <Button size="sm" color="primary">
+          Accept
+        </Button>
+        <Button size="sm" color="default" variant="flat">
+          Decline
+        </Button>
+      </div>
+    ),
+  },
+  {
+    title: "Ben Berman modified the Brand logo file.",
+    description: "2 hours ago",
+    user: <Avatar src="https://i.pravatar.cc/150?u=a04258114e29026302d" />,
+    type: "unread",
+    footer: (
+      <Link href="#" color="foreground" className="flex gap-2 items-center">
+        <FaFileAlt className="text-secondary" size={24} />
+        <div className="flex flex-col">
+          <strong className="text-small font-medium">
+            Brand_Logo_v1.2.fig
+          </strong>
+          <p className="text-tiny text-default-400">3.4 MB</p>
+        </div>
+      </Link>
+    ),
+  },
+  {
+    title: "Jane Doe liked your post.",
+    description: "2 hours ago",
+    user: <Avatar src="https://i.pravatar.cc/150?u=a04258114e29026702d" />,
+    type: "unread",
+  },
+  {
+    title: "John Smith started following you.",
+    description: "2 hours ago",
+    user: <Avatar src="https://i.pravatar.cc/150?u=a04258114e29026708c" />,
+    type: "archived",
+  },
+  {
+    title: "Jacob Jones mentioned you in a post.",
+    description: "2 hours ago",
+    user: <Avatar src="https://i.pravatar.cc/150?u=a04258a2462d826712d" />,
+    type: "archived",
+  },
+];
 
-// const unreadNotifications = Notifications.filter(
-//   (obj) => obj.type === "unread"
-// );
+const unreadNotifications = Notifications.filter(
+  (obj) => obj.type === "unread"
+);
 
-// const archivedNotifications = Notifications.filter(
-//   (obj) => obj.type === "archived"
-// );
+const archivedNotifications = Notifications.filter(
+  (obj) => obj.type === "archived"
+);
 
-// const NotificationItem = ({
-//   notification,
-//   withAvatar,
-// }: {
-//   notification: NotificationsType;
-//   withAvatar: boolean;
-// }) => {
-//   return (
-//     <>
-//       <div
-//         className={`flex flex-row gap-4 w-full border-b border-divider px-6 py-4 ${
-//           notification.type == "unread" && "bg-primary-50/50"
-//         }`}
-//       >
-//         {withAvatar && (
-//           <div className="flex justify-center items-center">
-//             {notification.user}
-//           </div>
-//         )}
-//         <div className="flex flex-col items-start gap-2">
-//           <div className="flex flex-col gap-1">
-//             <p className="text-small text-foreground">{notification.title}</p>
-//             <p className="text-tiny text-default-400">
-//               {notification.description}
-//             </p>
-//           </div>
-//           {notification.footer}
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// const RenderTabContent = ({
-//   notifications,
-//   title,
-//   withAvatar,
-// }: {
-//   notifications: NotificationsType[];
-//   title: string;
-//   withAvatar: boolean;
-// }) => {
-//   return (
-//     <Tab
-//       key={title.toLowerCase()}
-//       title={
-//         <div className="flex gap-2 items-center pb-1">
-//           <p>{title}</p>
-//           <Chip
-//             size="sm"
-//             variant="bordered"
-//             classNames={{
-//               content: "text-inherit font-normal flex-none",
-//             }}
-//           >
-//             {notifications.length}
-//           </Chip>
-//         </div>
-//       }
-//       aria-label={title}
-//     >
-//       <ScrollShadow hideScrollBar className="w-full h-80">
-//         {notifications.map((notification, index) => (
-//           <NotificationItem
-//             key={index}
-//             notification={notification}
-//             withAvatar={withAvatar}
-//           />
-//         ))}
-//       </ScrollShadow>
-//     </Tab>
-//   );
-// };
+const NotificationItem = ({
+  notification,
+  withAvatar,
+}: {
+  notification: NotificationsType;
+  withAvatar: boolean;
+}) => {
+  return (
+    <>
+      <div
+        className={`flex flex-row gap-4 w-full border-b border-divider px-6 py-4 ${
+          notification.type == "unread" && "bg-primary-50/50"
+        }`}
+      >
+        {withAvatar && (
+          <div className="flex justify-center items-center">
+            {notification.user}
+          </div>
+        )}
+        <div className="flex flex-col items-start gap-2">
+          <div className="flex flex-col gap-1">
+            <p className="text-small text-foreground">{notification.title}</p>
+            <p className="text-tiny text-default-400">
+              {notification.description}
+            </p>
+          </div>
+          {notification.footer}
+        </div>
+      </div>
+    </>
+  );
+};
 
 function NotificationsCard() {
   const [maxWidth, setMaxWidth] = useState<ViewProps["current"]>("100%");
@@ -209,27 +171,51 @@ function NotificationsCard() {
                   Mark all as read
                 </Button>
               </div>
-              {/* <Tabs
+              <Tabs
                 variant="underlined"
                 color="primary"
                 aria-label="Notifications Options"
               >
-                <RenderTabContent
-                  notifications={Notifications}
-                  title="All"
-                  withAvatar
-                />
-                <RenderTabContent
-                  notifications={unreadNotifications}
-                  title="Unread"
-                  withAvatar
-                />
-                <RenderTabContent
-                  notifications={archivedNotifications}
-                  title="Archived"
-                  withAvatar
-                />
-              </Tabs> */}
+                {["All", "Unread", "Archived"].map((tabTitle) => {
+                  const notifications =
+                    tabTitle === "All"
+                      ? Notifications
+                      : tabTitle === "Unread"
+                      ? unreadNotifications
+                      : archivedNotifications;
+
+                  return (
+                    <Tab
+                      key={tabTitle.toLowerCase()}
+                      title={
+                        <div className="flex gap-2 items-center pb-1">
+                          <p>{tabTitle}</p>
+                          <Chip
+                            size="sm"
+                            variant="bordered"
+                            classNames={{
+                              content: "text-inherit font-normal flex-none",
+                            }}
+                          >
+                            {notifications.length}
+                          </Chip>
+                        </div>
+                      }
+                      aria-label={tabTitle}
+                    >
+                      <ScrollShadow hideScrollBar className="w-full h-80">
+                        {notifications.map((notification, index) => (
+                          <NotificationItem
+                            key={index}
+                            notification={notification}
+                            withAvatar={withAvatar}
+                          />
+                        ))}
+                      </ScrollShadow>
+                    </Tab>
+                  );
+                })}
+              </Tabs>
               <div className="flex justify-end gap-4">
                 <Button color="default" variant="light">
                   Settings

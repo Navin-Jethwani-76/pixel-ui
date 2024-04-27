@@ -12,14 +12,17 @@ import {
   Switch,
   SwitchProps,
   cn,
-} from "@nextui-org/react";
+} from "@/lib/nextui";
 import {
   ViewProps,
   btnColorOptions,
   btnVariantOptions,
   switchColorOptions,
 } from "@/app/components";
-import UiComponent from "@/components/common/ui-component";
+import dynamic from "next/dynamic";
+const UiComponent = dynamic(() => import("@/components/common/ui-component"), {
+  ssr: false,
+});
 import { NotificationSettingType } from "@/app/components/cards";
 import { Settings } from "@/app/components/cards/notifications-settings";
 
@@ -207,7 +210,7 @@ function NotificationsSettings() {
               <p className="text-large">{header}</p>
               <p className="text-small text-default-500">{description}</p>
             </div>
-            <ScrollShadow className="w-full max-h-[400px]" hideScrollBar>
+            <ScrollShadow className="w-full max-h-[500px]" hideScrollBar>
               <div className="flex flex-col gap-2">
                 {Settings.map((item, index) => {
                   return (

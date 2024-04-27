@@ -11,8 +11,11 @@ import {
   Switch,
   ScrollShadow,
   SwitchProps,
-} from "@nextui-org/react";
-import UiComponent from "@/components/common/ui-component";
+} from "@/lib/nextui";
+import dynamic from "next/dynamic";
+const UiComponent = dynamic(() => import("@/components/common/ui-component"), {
+  ssr: false,
+});
 import {
   NotificationSettingType,
   SecuritySettingType,
@@ -21,9 +24,12 @@ import { CiEdit } from "react-icons/ci";
 import { BiUserCircle } from "react-icons/bi";
 import { LuBellRing, LuFingerprint } from "react-icons/lu";
 import { ViewProps } from "@/app/components";
-import { inputFields, getClassName } from "@/app/components/cards";
+import { inputFields } from "@/app/components/cards";
 import { Settings } from "@/app/components/cards/notifications-settings";
 
+const getClassName = (maxWidth: string) => {
+  return maxWidth === "375px" ? "max-w-xs" : "w-[270px]";
+};
 interface CustomSwitchType extends SwitchProps {
   setting: NotificationSettingType;
   switchColor: SwitchProps["color"];
@@ -169,9 +175,7 @@ function SettingsTabs() {
       <>
         <Card className="w-full flex justify-center items-center">
           <CardBody
-            className={`flex flex-col justify-between items-center gap-4 w-full ${
-              maxWidth === "375px" ? "max-w-[360px]" : "max-w-xl"
-            }`}
+            className={`flex flex-col justify-between items-center gap-4 w-full`}
           >
             <div className="flex flex-col gap-4 w-full">
               <h4 className="text-large font-medium">Account Details</h4>
@@ -190,7 +194,12 @@ function SettingsTabs() {
                 </p>
               </div>
             </div>
-            <ScrollShadow className="w-full max-h-[360px]" hideScrollBar>
+            <ScrollShadow
+              className={`w-full ${
+                maxWidth == "375px" ? "max-h-[300px]" : "lg:max-h-[360px]"
+              }`}
+              hideScrollBar
+            >
               <div
                 className={`flex ${
                   maxWidth == "375px"
@@ -244,7 +253,7 @@ function SettingsTabs() {
               </p>
             </div>
             <ScrollShadow
-              className="flex flex-col gap-2 w-full h-full max-h-[480px]"
+              className="flex flex-col gap-2 w-full h-full max-h-[380px]"
               hideScrollBar
             >
               {Settings.map((item, index) => {
@@ -285,8 +294,9 @@ function SettingsTabs() {
               </p>
             </div>
             <ScrollShadow
-              className="flex flex-col gap-2 w-full h-full max-h-[550px]"
+              className="flex flex-col gap-2 w-full h-full max-h-[450px]"
               hideScrollBar
+              size={0}
             >
               {SecuritySettings.map((item, index) => {
                 return <CustomSettingComponent key={index} item={item} />;
@@ -328,7 +338,11 @@ function SettingsTabs() {
             maxWidth: maxWidth,
           }}
         >
-          <Card className="w-full h-full max-h-[700px]">
+          <Card
+            className={`w-full h-full max-h-[600px] ${
+              maxWidth === "375px" ? "max-w-[360px]" : "max-w-xl"
+            }`}
+          >
             <CardBody className="w-full px-0 pb-0">
               <Tabs
                 aria-label="Options"

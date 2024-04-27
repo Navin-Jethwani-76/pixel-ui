@@ -16,13 +16,16 @@ import {
   Select,
   SelectItem,
   cn,
-} from "@nextui-org/react";
+} from "@/lib/nextui";
 import {
   ViewProps,
   btnColorOptions,
   btnVariantOptions,
 } from "@/app/components";
-import UiComponent from "@/components/common/ui-component";
+import dynamic from "next/dynamic";
+const UiComponent = dynamic(() => import("@/components/common/ui-component"), {
+  ssr: false,
+});
 import { RadioOptionType } from "@/app/components/cards";
 import { BiLogoVisa } from "react-icons/bi";
 import { RiMastercardLine } from "react-icons/ri";

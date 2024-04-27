@@ -18,7 +18,7 @@ import {
   Select,
   SelectItem,
   User,
-} from "@nextui-org/react";
+} from "@/lib/nextui";
 import {
   ViewProps,
   btnColorOptions,
@@ -26,7 +26,10 @@ import {
   inputColorOptions,
   inputVariantOptions,
 } from "@/app/components";
-import UiComponent from "@/components/common/ui-component";
+import dynamic from "next/dynamic";
+const UiComponent = dynamic(() => import("@/components/common/ui-component"), {
+  ssr: false,
+});
 import { SideBarContents } from "@/app/components/application/sideabar";
 import { RiHome5Line } from "react-icons/ri";
 import { FiSidebar } from "react-icons/fi";
@@ -328,20 +331,20 @@ function SideBar() {
             }}
           />
         )}
-        <ScrollShadow
-          className={`w-full h-full max-h-[370px]`}
-          hideScrollBar
-          size={0}
-        >
-          <div className="w-full flex flex-col gap-2">
-            {withSearchInput && (
-              <Input
-                placeholder="Search..."
-                variant={inputVariant}
-                color={inputColor}
-                size="sm"
-              />
-            )}
+        <div className="w-full flex flex-col gap-2">
+          {withSearchInput && (
+            <Input
+              placeholder="Search..."
+              variant={inputVariant}
+              color={inputColor}
+              size="sm"
+            />
+          )}
+          <ScrollShadow
+            className={`w-full h-full max-h-[415px]`}
+            hideScrollBar
+            size={0}
+          >
             <Listbox
               aria-label="SideBar List"
               className="border-small rounded-small border-default-200 dark:border-default-100"
@@ -365,8 +368,8 @@ function SideBar() {
                 );
               })}
             </Listbox>
-          </div>
-        </ScrollShadow>
+          </ScrollShadow>
+        </div>
         <div className="mt-auto flex flex-col gap-2 w-full">
           <Button
             variant={btnVariant}
@@ -502,18 +505,14 @@ const SideBardContent = () => {
       />`
           : ``
       }
-      <ScrollShadow className="w-full h-full max-h-[500px]" hideScrollBar size={0}>
-        <div className="w-full flex flex-col gap-2">
-          ${
-            withSearchInput
-              ? `<Input
-            placeholder="Search..."
-            variant="${inputVariant}"
-            color="${inputColor}"
-            size="sm"
-          />`
-              : ``
-          }
+      <div className="w-full flex flex-col gap-2">
+        ${
+          withSearchInput
+            ? `<Input placeholder="Search..." variant="${inputVariant}" color="${inputColor}" size="sm" />`
+            : ``
+        }
+        {/* modify max-h below if you remove other elements. */}
+        <ScrollShadow className="w-full h-full max-h-[350px] lg:max-h-[420px]" hideScrollBar size={0}>
           <Listbox aria-label="SideBar List" className="border-small rounded-small border-default-200 dark:border-default-100">
             {SideBarList.map((obj) => {
               return (
@@ -534,8 +533,8 @@ const SideBardContent = () => {
               );
             })}
           </Listbox>
-        </div>
-      </ScrollShadow>
+        </ScrollShadow>
+      </div>
       <div className="mt-auto flex flex-col gap-2 w-full">
         <Button
           variant="${btnVariant}"
