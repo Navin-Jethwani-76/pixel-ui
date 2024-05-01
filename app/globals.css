@@ -1,3 +1,77 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  div[data-slot="base"] label[data-slot="label"] {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@layer components {
+  .w-tc-editor code[class*="language-"] .token.maybe-class-name,
+  .w-tc-editor pre[class*="language-"] .token.maybe-class-name,
+  .w-tc-editor code[class*="language-"] .token.plain-text,
+  .w-tc-editor pre[class*="language-"] .token.plain-text,
+  .w-tc-editor code[class*="language-"] .token.parameter,
+  .w-tc-editor pre[class*="language-"] .token.parameter {
+    color: white !important;
+  }
+
+  .w-tc-editor code[class*="language-"] .token.attr-name,
+  .w-tc-editor pre[class*="language-"] .token.attr-name {
+    color: rgb(145 180 213) !important;
+  }
+
+  .w-tc-editor code[class*="language-"] .token.string,
+  .w-tc-editor pre[class*="language-"] .token.string {
+    color: rgb(152 195 121) !important;
+  }
+
+  .w-tc-editor code[class*="language-"] .token.attr-value,
+  .w-tc-editor pre[class*="language-"] .token.attr-value {
+    color: rgb(152 195 121) !important;
+  }
+
+  .w-tc-editor code[class*="language-"] .token.property,
+  .w-tc-editor pre[class*="language-"] .token.property,
+  .w-tc-editor code[class*="language-"] .token.keyword,
+  .w-tc-editor pre[class*="language-"] .token.keyword {
+    color: rgb(198 120 221) !important;
+  }
+
+  .w-tc-editor code[class*="language-"] .token.function,
+  .w-tc-editor pre[class*="language-"] .token.function {
+    color: rgb(97 175 239) !important;
+  }
+
+  .w-tc-editor code[class*="language-"] .token.tag,
+  .w-tc-editor pre[class*="language-"] .token.tag {
+    color: rgb(229 192 123) !important;
+  }
+
+  .w-tc-editor code[class*="language-"] .token.class-name,
+  .w-tc-editor pre[class*="language-"] .token.class-name {
+    color: rgb(229 192 123) !important;
+  }
+
+  .w-tc-editor code[class*="language-"] .token.boolean,
+  .w-tc-editor pre[class*="language-"] .token.boolean,
+  .w-tc-editor code[class*="language-"] .token.constant,
+  .w-tc-editor pre[class*="language-"] .token.constant,
+  .w-tc-editor code[class*="language-"] .token.deleted,
+  .w-tc-editor pre[class*="language-"] .token.deleted,
+  .w-tc-editor code[class*="language-"] .token.number,
+  .w-tc-editor pre[class*="language-"] .token.number,
+  .w-tc-editor code[class*="language-"] .token.symbol,
+  .w-tc-editor pre[class*="language-"] .token.symbol {
+    color: rgb(152 195 121) !important;
+  }
+
+  .w-tc-editor code[class*="language-"] .token.operator,
+  .w-tc-editor pre[class*="language-"] .token.operator {
+    color: rgb(97 175 239) !important;
+  }
+}

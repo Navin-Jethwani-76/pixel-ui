@@ -1,8 +1,7 @@
-import { Docs as SiteDocs } from "@/config";
 import { redirect } from "next/navigation";
 
 const Docs = () => {
-  return redirect(`/docs/${SiteDocs[0].key}`);
+  return redirect(`/docs/installation`);
 };
 
 export default Docs;
