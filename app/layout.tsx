@@ -19,8 +19,7 @@ export const metadata: Metadata = {
     template: `%s | ${process.env.NEXT_PUBLIC_SITE_NAME}`,
     default: `${process.env.NEXT_PUBLIC_SITE_NAME}`,
   },
-  description:
-    "Explore a seamless user experience with our NextUI-powered site, offering pre-configured Pages. Streamline your journey with intuitive navigation and customizable options. Elevate your online presence effortlessly.",
+  description: "The Open Source alternative to NextUI Pro",
 };
 
 export default function RootLayout({

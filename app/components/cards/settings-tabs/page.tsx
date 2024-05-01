@@ -34,18 +34,13 @@ interface CustomSwitchType extends SwitchProps {
 
 const CustomSwitch = ({ setting, switchColor }: CustomSwitchType) => {
   return (
-    <Switch
-      defaultSelected={setting.enabled}
-      color={switchColor}
-      classNames={{
-        base: "bg-content2 flex-row-reverse w-full max-w-full justify-between rounded-medium gap-2 p-4",
-      }}
-    >
+    <div className="flex items-center justify-between gap-2 rounded-medium bg-content2 p-4">
       <div className="flex flex-col">
         <p className="text-medium">{setting.title}</p>
         <p className="text-small text-default-500">{setting.description}</p>
       </div>
-    </Switch>
+      <Switch defaultSelected={setting.enabled} color={switchColor}></Switch>
+    </div>
   );
 };
 

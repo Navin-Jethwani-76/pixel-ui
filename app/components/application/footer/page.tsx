@@ -392,7 +392,7 @@ import { FooterLinks } from "./data";
 
 export default function App() {
   return (
-    <div className="flex flex-col gap-4 w-full max-w-7xl pt-6 border-t-1 border-foreground-50">
+    <div className="flex flex-col gap-4 w-full p-6 border-t-1 border-foreground-50">
       ${
         type === "basic"
           ? `<div className="flex gap-4 flex-col justify-center sm:flex-row sm:items-center sm:justify-between">

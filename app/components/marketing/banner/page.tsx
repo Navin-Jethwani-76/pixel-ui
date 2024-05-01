@@ -248,8 +248,8 @@ import { IoMdClose } from "react-icons/io";
 
 const App = () => {
   return (
-    <div className="fixed w-full ${
-      bannerPosition == "top" ? "top-16" : "bottom-0"
+    <div className="relative w-full ${
+      bannerPosition == "top" ? "top-0" : "bottom-0"
     } ${
         bannerType === "floating"
           ? `p-1 ${bannerPosition == "top" ? "mt-1" : "mb-1"}`
@@ -268,9 +268,9 @@ const App = () => {
           ${bannerText}
         </p>
         <Button
-          className="flex flex-row gap-2" color="${
-            btnWithGradient ? undefined : btnColor
-          }" variant="${btnWithGradient ? undefined : btnVariant}"
+          className="flex flex-row gap-2" color=${
+            btnWithGradient ? `{${undefined}}` : `"${btnColor}"`
+          } variant=${btnWithGradient ? `{${undefined}}` : `"${btnVariant}"`}
           ${
             btnWithGradient
               ? `style={{

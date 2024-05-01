@@ -304,6 +304,9 @@ function UiComponent({
           sandBoxLink={sandBoxLink}
           currentCode={String(code[Number(selectedCode)]?.code) ?? undefined}
           codeLength={code.length}
+          componentSlug={`${newArr[newArr.length - 2]}-${
+            newArr[newArr.length - 1]
+          }`}
         />
       )}
     </div>

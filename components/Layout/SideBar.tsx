@@ -7,7 +7,7 @@ import {
   ListboxItem,
   ListboxSection,
 } from "@/lib/nextui";
-import { Components, Docs } from "@/config";
+import { Components, Docs, frameworkDocs } from "@/config";
 import { usePathname } from "next/navigation";
 
 const SideBar = () => {
@@ -20,24 +20,42 @@ const SideBar = () => {
   };
 
   const defaultExpandedKeys = [];
+  let newArr: string[] = [];
 
   const pathname = usePathname();
-  const pathArray = pathname.split("/components")
-  const newArr = pathArray[pathArray.length - 1].split("/")
-  if (newArr[newArr.length - 2]) {
-    const openKey = Components.find((c) => c.key == newArr[newArr.length - 2])?.key;
-    defaultExpandedKeys.push(openKey);
+  if (pathname.includes("/components")) {
+    const pathArray = pathname.split("/components");
+    newArr = pathArray[pathArray.length - 1].split("/");
+    if (newArr[newArr.length - 2]) {
+      const openKey = Components.find(
+        (c) => c.key == newArr[newArr.length - 2]
+      )?.key;
+      defaultExpandedKeys.push(openKey);
+    }
   }
 
   return (
     <div className="flex flex-col">
       <Listbox variant="bordered" aria-label="Docs">
-        <ListboxSection showDivider>
+        <ListboxSection showDivider title={"Docs"}>
           {Docs.map((obj) => {
             return (
               <ListboxItem
                 key={obj.key}
                 startContent={<obj.icon size={obj.iconSize} />}
+                href={`/docs/${obj.key}`}
+              >
+                {obj.name}
+              </ListboxItem>
+            );
+          })}
+        </ListboxSection>
+        <ListboxSection showDivider title={"Frameworks"}>
+          {frameworkDocs.map((obj) => {
+            return (
+              <ListboxItem
+                key={obj.key}
+                startContent={obj.Icon}
                 href={`/docs/${obj.key}`}
               >
                 {obj.name}
@@ -61,14 +79,16 @@ const SideBar = () => {
               aria-label={obj.parent}
               title={obj.parent}
             >
-              <Listbox variant="bordered" aria-label="Components">
+              <Listbox variant="bordered" aria-label={`${obj.key} Components`}>
                 {obj.children.map((child) => {
                   return (
                     <ListboxItem
                       href={`/components/${obj.key}/${child.key}`}
                       key={child.key}
                       className={
-                        newArr[newArr.length - 1] == child.key ? "border-default" : ""
+                        newArr[newArr.length - 1] == child.key
+                          ? "border-default"
+                          : ""
                       }
                     >
                       {child.name}

@@ -572,7 +572,7 @@ export default Login;`,
     <UiComponent
       preview={
         <div
-          className={`flex w-full h-full rounded-md justify-${alignment} border-1 border-default-200 dark:border-default-100 items-center gap-4`}
+          className={`flex w-full h-full rounded-md justify-${alignment} border-1 border-default-600/10 items-center gap-4`}
           style={
             withBackgroundImage
               ? {

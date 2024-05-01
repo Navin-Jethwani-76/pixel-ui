@@ -1,25 +1,36 @@
+import { IconType } from "react-icons";
 import { GrInstall } from "react-icons/gr";
-import { SiNextdotjs } from "react-icons/si";
-import { IoLogoReact } from "react-icons/io5";
+import { SiNextdotjs, SiRemix, SiVitest } from "react-icons/si";
 
-export const Docs = [
-  {
-    key: "introduction",
-    name: "Introduction",
-    icon: IoLogoReact,
-    iconSize: 20,
-  },
+export const Docs: {
+  key: string;
+  name: string;
+  icon: IconType;
+  iconSize: number;
+}[] = [
   {
     key: "installation",
     name: "Installation",
     icon: GrInstall,
     iconSize: 20,
   },
+];
+
+export const frameworkDocs = [
   {
     key: "next-js",
     name: "Next.js",
-    icon: SiNextdotjs,
-    iconSize: 20,
+    Icon: <SiNextdotjs size={20}></SiNextdotjs>,
+  },
+  {
+    key: "remix",
+    name: "Remix",
+    Icon: <SiRemix size={20}></SiRemix>,
+  },
+  {
+    key: "vite",
+    name: "Vite",
+    Icon: <SiVitest size={20}></SiVitest>,
   },
 ];
 

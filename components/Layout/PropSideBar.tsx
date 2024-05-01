@@ -19,6 +19,7 @@ interface PropSideBarProps {
   sandBoxLink?: string;
   currentCode?: string | undefined;
   codeLength: number;
+  componentSlug: string;
 }
 
 const PropSideBar = ({
@@ -28,6 +29,7 @@ const PropSideBar = ({
   sandBoxLink,
   currentCode,
   codeLength,
+  componentSlug,
 }: PropSideBarProps) => {
   const isPreviewEnabled = currentView == "preview";
   const [copied, setCopied] = useState(false);
@@ -93,13 +95,14 @@ const PropSideBar = ({
               </Button>
             </Tooltip>
             <Tooltip content="Report a bug" size="sm">
-              <Button isIconOnly variant="bordered" size="sm">
+              <Button
+                isIconOnly
+                variant="bordered"
+                size="sm"
+                as={Link}
+                href={`/report-bug?component=${componentSlug}`}
+              >
                 <FaBug />
-              </Button>
-            </Tooltip>
-            <Tooltip content="Edit on Github" size="sm">
-              <Button isIconOnly variant="bordered" size="sm">
-                <FaGithub />
               </Button>
             </Tooltip>
           </>

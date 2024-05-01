@@ -12,6 +12,7 @@ import {
 import { ThemeSwitcher } from "@/components/Layout/theme-switcher";
 import Logo from "@/components/common/Logo";
 import SideBar from "@/components/Layout/SideBar";
+import ComponentSearch from "@/components/Layout/ComponentSearch";
 import { usePathname } from "next/navigation";
 
 const NavBar = () => {
@@ -52,6 +53,7 @@ const NavBar = () => {
 
         <NavbarContent justify="end">
           <NavbarItem className="flex gap-2">
+            <ComponentSearch />
             <ThemeSwitcher />
           </NavbarItem>
         </NavbarContent>
