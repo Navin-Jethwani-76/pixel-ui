@@ -74,6 +74,7 @@ function ComponentSearch() {
                   variant="bordered"
                   value={searchValue}
                   onValueChange={setSearchValue}
+                  autoFocus
                   startContent={<FiSearch size={20} />}
                   endContent={
                     <Chip size="sm" radius="sm">

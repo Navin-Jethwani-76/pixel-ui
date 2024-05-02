@@ -10,7 +10,7 @@ import {
 } from "@nextui-org/react";
 import { FaLaptopCode, FaMobileAlt, FaTabletAlt } from "react-icons/fa";
 import { PiCodesandboxLogo } from "react-icons/pi";
-import { FaBug, FaCheck, FaGithub, FaRegCopy } from "react-icons/fa6";
+import { FaBug, FaCheck, FaRegCopy } from "react-icons/fa6";
 
 interface PropSideBarProps {
   PreviewProps: () => React.JSX.Element | null;
@@ -36,11 +36,7 @@ const PropSideBar = ({
 
   return (
     <div className="hidden md:flex flex-col gap-3 items-center w-1/4">
-      <div
-        className={`flex w-full gap-4 justify-${
-          isPreviewEnabled ? "between" : "end"
-        } items-center max-w-[230px] px-2`}
-      >
+      <div className={`flex w-full gap-4 justify-end items-center pe-2`}>
         {isPreviewEnabled && (
           <Tabs
             variant="bordered"

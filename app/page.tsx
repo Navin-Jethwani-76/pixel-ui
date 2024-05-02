@@ -6,50 +6,42 @@ import { FaAccessibleIcon, FaArrowRight, FaListCheck } from "react-icons/fa6";
 import { LuServer } from "react-icons/lu";
 import { MdOutlineDarkMode } from "react-icons/md";
 import { SiNextdotjs, SiVercel } from "react-icons/si";
+import ShowcaseCard from "@/components/common/ShowcaseCard";
 
-const cardContents: {
-  heading: string;
-  description: string;
-  Icon: IconType;
-}[] = [
+const cardContents = [
   {
     heading: "Fast",
     description: `Built on top of Tailwind CSS, which means no runtime styles, and no unnecessary classes in your bundle.`,
-    Icon: BsLightningCharge,
+    Icon: <BsLightningCharge size={24} />,
   },
   {
     heading: "Light & Dark UI",
     description: `All the components are designed to work in dark mode and light mode. NextUI automatically changes the theme when detects HTML theme prop changes.`,
-    Icon: MdOutlineDarkMode,
+    Icon: <MdOutlineDarkMode size={24} />,
   },
   {
     heading: "React server components",
     description: `You can directly use all the components in a React Server Component (RSC). The components that need to be rendered on client include "use client" on top of the code`,
-    Icon: LuServer,
+    Icon: <LuServer size={24} />,
   },
   {
     heading: "Accessible components",
     description: `All the components follow the WAI-ARIA guidelines, provide keyboard support and sensible focus management.`,
-    Icon: FaAccessibleIcon,
+    Icon: <FaAccessibleIcon size={24} />,
   },
 ];
 
-const linkedCards: {
-  heading: string;
-  description: string;
-  Icon: IconType;
-  link: string;
-}[] = [
+const linkedCards = [
   {
     heading: "Getting Started",
     description: `Make beautiful, modern, and fast applications by installing just a few packages.`,
-    Icon: FaListCheck,
+    Icon: <FaListCheck size={24} />,
     link: "/docs/installation",
   },
   {
     heading: "PixelUI + Next.js",
     description: `We have a Next.Js template with some of Pixel UI Components Included. Start your next Project with a single command.`,
-    Icon: SiNextdotjs,
+    Icon: <SiNextdotjs size={24} />,
     link: "/docs/next-js",
   },
 ];
@@ -106,35 +98,10 @@ export default function Home() {
       <div className="w-full flex flex-col gap-4 items-center p-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center gap-4">
           {cardContents.map((card, index) => (
-            <Card key={index} className="w-full max-w-xs min-h-44" isPressable>
-              <CardHeader className="pb-0 flex gap-4 items-center text-base font-semibold">
-                <div className="flex justify-center p-2 rounded-full items-center bg-secondary-100/80 text-blue-500">
-                  <card.Icon size={24} />
-                </div>
-                {card.heading}
-              </CardHeader>
-              <CardBody className="font-normal text-base text-default-500">
-                {card.description}
-              </CardBody>
-            </Card>
+            <ShowcaseCard key={index} card={card} />
           ))}
           {linkedCards.map((card, index) => (
-            <Card
-              key={index}
-              className="w-full max-w-xs min-h-44 hover:opacity-100"
-              as={Link}
-              href={card.link}
-            >
-              <CardHeader className="pb-0 flex gap-4 items-center text-base font-semibold">
-                <div className="flex justify-center p-2 rounded-full items-center bg-secondary-100/80 text-blue-500">
-                  <card.Icon size={24} />
-                </div>
-                {card.heading}
-              </CardHeader>
-              <CardBody className="font-normal text-base text-default-500">
-                {card.description}
-              </CardBody>
-            </Card>
+            <ShowcaseCard key={index} card={card} />
           ))}
         </div>
       </div>

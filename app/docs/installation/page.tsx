@@ -1,9 +1,6 @@
 "use client";
 import React from "react";
 import {
-  Card,
-  CardBody,
-  CardHeader,
   Link,
   Listbox,
   ListboxItem,
@@ -12,26 +9,26 @@ import {
   Snippet,
 } from "@nextui-org/react";
 import CodeEditor from "@uiw/react-textarea-code-editor";
-import { IconType } from "react-icons";
 import { SiNextdotjs, SiRemix, SiVitest } from "react-icons/si";
+import ShowcaseCard from "@/components/common/ShowcaseCard";
 
 const linkedCards = [
   {
     heading: "Next.js",
     description: `Full-featured React framework with great developer experience.`,
-    Icon: SiNextdotjs,
+    Icon: <SiNextdotjs size={24} />,
     link: "/docs/next-js",
   },
   {
     heading: "Vite",
     description: `Fast and modern development server and build tool.`,
-    Icon: SiVitest,
+    Icon: <SiVitest size={24} />,
     link: "/docs/vite",
   },
   {
     heading: "Remix",
     description: `Full stack framework focused on web fundamentals and modern UX.`,
-    Icon: SiRemix,
+    Icon: <SiRemix size={24} />,
     link: "/docs/remix",
   },
 ];
@@ -187,24 +184,9 @@ function App() {
           id="framework-guides"
         >
           <h2 className="text-lg">Framework Guides</h2>
-          <div className="w-full flex flex-col md:justify-between items-center md:flex-row md:items-center gap-4">
+          <div className="w-full grid grid-cols-1 sm:grid-cols-3 justify-center items-center gap-4">
             {linkedCards.map((card, index) => (
-              <Card
-                key={index}
-                className="w-full md:max-w-xs hover:opacity-100"
-                as={Link}
-                href={card.link}
-              >
-                <CardHeader className="pb-0 flex gap-4 items-center text-base font-semibold">
-                  <div className="flex justify-center p-2 rounded-full items-center bg-secondary-100/80 text-blue-500">
-                    <card.Icon size={24} />
-                  </div>
-                  {card.heading}
-                </CardHeader>
-                <CardBody className="font-normal text-base text-default-500">
-                  {card.description}
-                </CardBody>
-              </Card>
+              <ShowcaseCard key={index} card={card} />
             ))}
           </div>
         </div>
