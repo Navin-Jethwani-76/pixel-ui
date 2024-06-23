@@ -52,7 +52,7 @@ const SettingsLayout = () => {
                 This displays your public profile on the site.
               </p>
             </div>
-            <Card>
+            <Card className="bg-transparent">
               <CardBody>
                 <User
                   name="Kate Moore"
@@ -113,7 +113,7 @@ const SettingsLayout = () => {
             />
           </div>
           <div className="w-fit">
-            <Button className="bg-default-foreground text-background" size="sm">
+            <Button variant="bordered" size="sm">
               Update Profile
             </Button>
           </div>
@@ -337,7 +337,7 @@ const SettingsLayout = () => {
             </Select>
           </div>
           <div className="w-fit">
-            <Button className="bg-default-foreground text-background" size="sm">
+            <Button variant="bordered" size="sm">
               Update Settings
             </Button>
           </div>
@@ -363,10 +363,10 @@ const SettingsLayout = () => {
         <Component
           {...getBaseProps()}
           className={
-            "group px-4 py-4 max-w-[300px] cursor-pointer gap-4 rounded-lg border-2 border-transparent flex-1 bg-default-100 data-[selected=true]:border-default-foreground"
+            "group px-4 py-4 max-w-[300px] cursor-pointer gap-4 rounded-lg border-2 border-transparent flex-1 data-[selected=true]:border-default-foreground"
           }
         >
-          <section className="flex flex-row-reverse justify-between hover:bg-content2">
+          <section className="flex flex-row-reverse justify-between">
             <VisuallyHidden>
               <input {...getInputProps()} />
             </VisuallyHidden>
@@ -385,7 +385,7 @@ const SettingsLayout = () => {
     return (
       <>
         <div className="flex flex-col gap-4">
-          <Card>
+          <Card className="bg-transparent">
             <CardBody className="flex flex-row justify-between items-center gap-2 px-4">
               <div className="flex gap-4 items-center">
                 <FaRegCreditCard size={24} />
@@ -398,10 +398,7 @@ const SettingsLayout = () => {
                   </p>
                 </div>
               </div>
-              <Button
-                className="bg-default-foreground text-background"
-                size="sm"
-              >
+              <Button variant="bordered" size="sm">
                 Update
               </Button>
             </CardBody>
@@ -527,10 +524,7 @@ const SettingsLayout = () => {
               </div>
             </div>
             <div className="w-fit">
-              <Button
-                className="bg-default-foreground text-background"
-                size="sm"
-              >
+              <Button variant="bordered" size="sm">
                 Save
               </Button>
             </div>
@@ -648,14 +642,14 @@ const SettingsLayout = () => {
                 Manage and invite Team Members.
               </p>
             </div>
-            <Card className="p-2">
-              <CardBody className="flex flex-col gap-4">
+            <Card className="bg-transparent">
+              <CardBody className="flex flex-col gap-4 px-0">
                 <div className="flex gap-2 justify-between items-center">
                   <p className="text-sm font-medium text-default-700">
                     Invite new members by email address
                   </p>
                   <Button
-                    className="bg-default-foreground text-background"
+                    variant="bordered"
                     size="sm"
                     endContent={<FaLink size={18} />}
                   >
@@ -698,8 +692,8 @@ const SettingsLayout = () => {
                   </div>
                   <div className="w-fit">
                     <Button
-                      className="bg-default-200 text-default-700"
                       size="sm"
+                      variant="bordered"
                       endContent={<IoAddCircleOutline size={18} />}
                     >
                       Add More
@@ -714,10 +708,7 @@ const SettingsLayout = () => {
                       Team Members
                     </span>
                   </p>
-                  <Button
-                    className="bg-default-foreground text-background"
-                    size="sm"
-                  >
+                  <Button variant="bordered" size="sm">
                     Send Invite
                   </Button>
                 </div>
@@ -785,12 +776,13 @@ const SettingsLayout = () => {
                 cursor: "bg-content1 dark:bg-content1",
                 panel: "py-0",
               }}
+              variant="light"
             >
               {TabsContent.map((tab) => {
                 return (
                   <Tab key={tab.label} title={tab.label}>
                     <ScrollShadow
-                      className={`w-full h-full ${
+                      className={`w-full h-full pb-4 ${
                         maxWidth == "375px" ? "max-h-[515px]" : "max-h-[530px]"
                       }`}
                       hideScrollBar

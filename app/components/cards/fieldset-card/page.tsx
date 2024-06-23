@@ -26,8 +26,9 @@ function FieldsetCard() {
   const [orgName, setOrgName] = useState("");
   const [inputVariant, setInputVariant] =
     useState<InputProps["variant"]>("bordered");
-  const [btnColor, setBtnColor] = useState<ButtonProps["color"]>("primary");
-  const [btnVariant, setBtnVariant] = useState<ButtonProps["variant"]>("solid");
+  const [btnColor, setBtnColor] = useState<ButtonProps["color"]>("secondary");
+  const [btnVariant, setBtnVariant] =
+    useState<ButtonProps["variant"]>("bordered");
 
   const PreviewProps = () => {
     return (
@@ -68,7 +69,7 @@ function FieldsetCard() {
           variant="bordered"
           placeholder="Select a variant"
           disallowEmptySelection
-          defaultSelectedKeys={["solid"]}
+          defaultSelectedKeys={["bordered"]}
           className="max-w-xs"
           onChange={(e) => {
             setBtnVariant(e.target.value as ButtonProps["variant"]);
@@ -90,7 +91,7 @@ function FieldsetCard() {
           variant="bordered"
           placeholder="Select a color"
           disallowEmptySelection
-          defaultSelectedKeys={["primary"]}
+          defaultSelectedKeys={["secondary"]}
           className="max-w-xs"
           onChange={(e) => {
             setBtnColor(e.target.value as ButtonProps["color"]);
@@ -115,7 +116,7 @@ function FieldsetCard() {
         }}
       >
         <Card
-          className={`w-full ${
+          className={`w-full bg-transparent ${
             maxWidth === "375px"
               ? "max-w-xs"
               : maxWidth === "768px"

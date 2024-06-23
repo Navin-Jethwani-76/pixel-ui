@@ -53,22 +53,19 @@ export default function Home() {
         <div className="text-center leading-8 md:leading-10">
           <div className="inline-block">
             <h1 className="tracking-tight inline font-semibold text-[2.5rem] lg:text-5xl">
-              The&nbsp;
+              Prebuilt&nbsp;
             </h1>
             <h1 className="tracking-tight inline font-semibold from-[#FF1CF7] to-[#b249f8] text-[2.5rem] lg:text-5xl bg-clip-text text-transparent bg-gradient-to-b">
-              Open Source&nbsp;
+              <Link
+                href="https://nextui.org/"
+                isExternal
+                className="tracking-tight inline font-semibold text-[2.5rem] lg:text-5xl"
+              >
+                NextUI
+              </Link>{" "}
+              Components&nbsp;
             </h1>
           </div>
-          <h1 className="tracking-tight inline font-semibold text-[2.5rem] lg:text-5xl">
-            alternative to{" "}
-            <Link
-              href="https://nextui.pro/"
-              isExternal
-              className="tracking-tight inline font-semibold text-[2.5rem] lg:text-5xl"
-            >
-              NextUI Pro
-            </Link>
-          </h1>
         </div>
         <h2 className="!w-full md:w-1/2 text-lg lg:text-xl font-normal text-default-500 block max-w-full text-center">
           Explore a collection of beautiful and responsive components, built

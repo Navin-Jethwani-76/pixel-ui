@@ -32,7 +32,7 @@ import { BiCheck } from "react-icons/bi";
 const Pricing = () => {
   const [maxWidth, setMaxWidth] = useState<ViewProps["current"]>("100%");
   const [type, setType] = useState<PricingType["type"]>("custom");
-  const [withCardBg, setWithCardBg] = useState(true);
+  const [withCardBg, setWithCardBg] = useState(false);
   const [withGradientBg, setWithGradientBg] = useState(false);
   const [highlightPro, setHighlightPro] = useState(true);
   const [featuredBtnColor, setFeaturedBtnColor] =

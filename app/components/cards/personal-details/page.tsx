@@ -32,7 +32,7 @@ function PersonalDetails() {
     "Manage your personal details"
   );
   const [editBtnColor, setEditBtnColor] =
-    useState<ButtonProps["color"]>("primary");
+    useState<ButtonProps["color"]>("secondary");
   const [editBtnVariant, setEditBtnVariant] =
     useState<ButtonProps["variant"]>("solid");
 
@@ -83,7 +83,7 @@ function PersonalDetails() {
           variant="bordered"
           placeholder="Select a color"
           disallowEmptySelection
-          defaultSelectedKeys={["primary"]}
+          defaultSelectedKeys={["secondary"]}
           className="max-w-xs"
           onChange={(e) => {
             setEditBtnColor(e.target.value as ButtonProps["color"]);

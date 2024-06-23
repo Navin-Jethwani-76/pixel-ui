@@ -213,7 +213,7 @@ function SettingsTabs() {
             </ScrollShadow>
             <div className="flex justify-between w-full gap-4">
               <Button
-                variant={"light"}
+                variant={"bordered"}
                 color={"danger"}
                 className="rounded-full"
               >
@@ -221,7 +221,7 @@ function SettingsTabs() {
               </Button>
               <Button
                 variant={"solid"}
-                color={"primary"}
+                color={"secondary"}
                 className="rounded-full"
               >
                 Continue
@@ -261,10 +261,10 @@ function SettingsTabs() {
             <div
               className={`w-full flex justify-center md:justify-end items-center gap-4`}
             >
-              <Button color={"danger"} variant={"light"}>
+              <Button color={"danger"} variant={"bordered"}>
                 Reset To Default
               </Button>
-              <Button color={"primary"} variant={"flat"}>
+              <Button color={"secondary"} variant={"solid"}>
                 Save Changes
               </Button>
             </div>
@@ -331,7 +331,7 @@ function SettingsTabs() {
           }}
         >
           <Card
-            className={`w-full h-full max-h-[600px] ${
+            className={`w-full h-full bg-transparent max-h-[600px] ${
               maxWidth === "375px" ? "max-w-[360px]" : "max-w-xl"
             }`}
           >
@@ -339,10 +339,10 @@ function SettingsTabs() {
               <Tabs
                 aria-label="Options"
                 selectedKey={selected}
+                variant="bordered"
                 onSelectionChange={(key) => setSelected(key as string)}
                 classNames={{
                   panel: "h-full flex justify-center pb-0 px-0",
-                  base: "px-2",
                 }}
               >
                 {SettingTabs.map((tab) => {

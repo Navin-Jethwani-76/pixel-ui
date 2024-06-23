@@ -80,7 +80,7 @@ const Feedback = () => {
   const TextArea = () => {
     return (
       <>
-        <Card className="w-full max-w-xs">
+        <Card className="w-full max-w-xs bg-transparent">
           <CardBody className="flex flex-col gap-4">
             <Textarea
               variant="bordered"
@@ -107,7 +107,7 @@ const Feedback = () => {
         <Popover
           placement="bottom"
           classNames={{
-            content: "p-0 w-[300px]",
+            content: "p-0 w-[300px] bg-transparent",
           }}
           isOpen={isOpen}
           onOpenChange={(open) => setIsOpen(open)}
@@ -119,59 +119,6 @@ const Feedback = () => {
             <TextArea />
           </PopoverContent>
         </Popover>
-      </>
-    );
-  };
-
-  const Modal = () => {
-    const { isOpen, onOpen, onOpenChange } = useDisclosure();
-
-    useEffect(() => {
-      onOpen();
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    return (
-      <>
-        <Button variant="bordered" onPress={onOpen}>
-          Open Modal
-        </Button>
-        <NextUiModal isOpen={isOpen} onOpenChange={onOpenChange}>
-          <ModalContent>
-            {(onClose) => (
-              <>
-                <ModalBody className="flex flex-col gap-4 pt-12 pb-4 text-center">
-                  <div className="flex flex-col gap-2">
-                    <h1 className="text-xl font-medium">
-                      Help us improve Acme.
-                    </h1>
-                    <p className="text-small font-normal text-default-500">
-                      We value your feedback. If you have any ideas or
-                      suggestions to improve our product, let us know.
-                    </p>
-                  </div>
-                  <Textarea
-                    variant="bordered"
-                    minRows={6}
-                    placeholder="Ideas or suggestions to improve our product"
-                  />
-                  <Divider />
-                  <div className="flex justify-between items-center gap-4">
-                    <RatingRadioGroup />
-                    <div className="flex gap-4">
-                      <Button color="danger" variant="flat" onPress={onClose}>
-                        Close
-                      </Button>
-                      <Button color="secondary" onPress={onClose}>
-                        Submit
-                      </Button>
-                    </div>
-                  </div>
-                </ModalBody>
-              </>
-            )}
-          </ModalContent>
-        </NextUiModal>
       </>
     );
   };
@@ -362,10 +309,8 @@ export default App;`
             <RatingRadioGroup />
           ) : type == "textarea" ? (
             <TextArea />
-          ) : type == "popover" ? (
-            <PopOver />
           ) : (
-            <Modal />
+            <PopOver />
           )}
         </div>
       </>

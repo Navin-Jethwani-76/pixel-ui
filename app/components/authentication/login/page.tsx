@@ -102,7 +102,7 @@ const Additional: React.FC = () => {
 };
 
 const LoginForm = () => {
-  const [withCardBg, setWithCardBg] = useState(true);
+  const [withCardBg, setWithCardBg] = useState(false);
   const [withLogo, setWithLogo] = useState(true);
   const [isBtnFullWidth, setIsBtnFullWidth] = useState(true);
   const [withSocialLogin, setWithSocialLogin] = useState(true);
@@ -122,7 +122,7 @@ const LoginForm = () => {
   const [socialbtnVariant, setSocialBtnVariant] =
     useState<ButtonProps["variant"]>("bordered");
   const [socialBtnPlacement, setSocialBtnPlacement] =
-    useState<SocialButtonsProps["placement"]>("bottom");
+    useState<SocialButtonsProps["placement"]>("top");
   const [alignment, setAlignment] =
     useState<alignOptionProps["alignment"]>("center");
 

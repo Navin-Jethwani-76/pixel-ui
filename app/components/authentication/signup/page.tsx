@@ -98,8 +98,7 @@ const Additional: React.FC = () => {
 };
 
 const SignUpForm = () => {
-  // preview props
-  const [withCardBg, setWithCardBg] = useState(true);
+  const [withCardBg, setWithCardBg] = useState(false);
   const [withLogo, setWithLogo] = useState(true);
   const [isBtnFullWidth, setIsBtnFullWidth] = useState(true);
   const [withSocialLogin, setWithSocialLogin] = useState(true);
@@ -119,7 +118,7 @@ const SignUpForm = () => {
   const [socialbtnVariant, setSocialBtnVariant] =
     useState<ButtonProps["variant"]>("bordered");
   const [socialBtnPlacement, setSocialBtnPlacement] =
-    useState<SocialButtonsProps["placement"]>("bottom");
+    useState<SocialButtonsProps["placement"]>("top");
   const [alignment, setAlignment] =
     useState<alignOptionProps["alignment"]>("center");
 
@@ -592,7 +591,7 @@ export default SignUp;`,
               </CardBody>
             </Card>
           ) : (
-            <div className="w-full max-w-xs flex flex-col gap-4 items-center">
+            <div className="w-full max-w-xs flex flex-col gap-4 justify-center items-center m-4">
               <CardInnerContent />
             </div>
           )}

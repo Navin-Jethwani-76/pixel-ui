@@ -103,11 +103,11 @@ function PaymentMethodCard() {
   );
   const [radioValue, setRadioValue] = useState<RadioOptionType["title"]>("");
   const [cancelBtnColor, setCancelBtnColor] =
-    useState<ButtonProps["color"]>("default");
+    useState<ButtonProps["color"]>("danger");
   const [cancelbtnVariant, setCancelBtnVariant] =
     useState<ButtonProps["variant"]>("flat");
   const [continuebtnColor, setContinueBtnColor] =
-    useState<ButtonProps["color"]>("primary");
+    useState<ButtonProps["color"]>("secondary");
   const [continuebtnVariant, setContinueBtnVariant] =
     useState<ButtonProps["variant"]>("solid");
 
@@ -168,7 +168,7 @@ function PaymentMethodCard() {
           variant="bordered"
           placeholder="Select a color"
           disallowEmptySelection
-          defaultSelectedKeys={["default"]}
+          defaultSelectedKeys={["danger"]}
           className="max-w-xs"
           onChange={(e) => {
             setCancelBtnColor(e.target.value as ButtonProps["color"]);
@@ -207,7 +207,7 @@ function PaymentMethodCard() {
           variant="bordered"
           placeholder="Select a color"
           disallowEmptySelection
-          defaultSelectedKeys={["primary"]}
+          defaultSelectedKeys={["secondary"]}
           className="max-w-xs"
           onChange={(e) => {
             setContinueBtnColor(e.target.value as ButtonProps["color"]);
@@ -241,7 +241,7 @@ function PaymentMethodCard() {
             maxWidth: maxWidth,
           }}
         >
-          <Card>
+          <Card className="bg-transparent">
             <CardBody
               className={`flex flex-col items-center gap-2 w-full ${
                 maxWidth === "375px" ? "max-w-[360px]" : "max-w-sm"

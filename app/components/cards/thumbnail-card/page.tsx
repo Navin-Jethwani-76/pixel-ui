@@ -24,13 +24,13 @@ const ThumbnailCard = () => {
     "This is a card with a thumbnail image on top"
   );
   const [cancelBtnColor, setCancelBtnColor] =
-    useState<ButtonProps["color"]>("default");
+    useState<ButtonProps["color"]>("danger");
   const [cancelbtnVariant, setCancelBtnVariant] =
     useState<ButtonProps["variant"]>("light");
   const [continuebtnColor, setContinueBtnColor] =
     useState<ButtonProps["color"]>("default");
   const [continuebtnVariant, setContinueBtnVariant] =
-    useState<ButtonProps["variant"]>("solid");
+    useState<ButtonProps["variant"]>("bordered");
 
   const PreviewProps = () => {
     return (
@@ -79,7 +79,7 @@ const ThumbnailCard = () => {
           variant="bordered"
           placeholder="Select a color"
           disallowEmptySelection
-          defaultSelectedKeys={["default"]}
+          defaultSelectedKeys={["danger"]}
           className="max-w-xs"
           onChange={(e) => {
             setCancelBtnColor(e.target.value as ButtonProps["color"]);
@@ -96,7 +96,7 @@ const ThumbnailCard = () => {
           variant="bordered"
           placeholder="Select a variant"
           disallowEmptySelection
-          defaultSelectedKeys={["solid"]}
+          defaultSelectedKeys={["bordered"]}
           className="max-w-xs"
           onChange={(e) => {
             setContinueBtnVariant(e.target.value as ButtonProps["variant"]);

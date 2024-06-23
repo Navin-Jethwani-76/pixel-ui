@@ -6,7 +6,7 @@ import NavBar from "@/components/Layout/NavBar";
 import Footer from "@/components/Layout/Footer";
 import SideBar from "@/components/Layout/SideBar";
 import { ScrollShadow } from "@/lib/nextui";
-
+import { Analytics } from "@vercel/analytics/react";
 const inter = Inter({ subsets: ["latin"] });
 
 const defaultUrl = process.env.VERCEL_URL
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: `%s | ${process.env.NEXT_PUBLIC_SITE_NAME}`,
     default: `${process.env.NEXT_PUBLIC_SITE_NAME}`,
   },
-  description: "The Open Source alternative to NextUI Pro",
+  description: "Supercharge Your React Apps with Prebuilt NextUI Components",
 };
 
 export default function RootLayout({
@@ -31,6 +31,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
+          <Analytics />
           <NavBar />
           <div className="grid grid-cols-12 gap-4 h-full sm:h-[800px]">
             <ScrollShadow

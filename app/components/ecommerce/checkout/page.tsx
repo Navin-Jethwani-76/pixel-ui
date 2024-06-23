@@ -576,8 +576,8 @@ const Checkout = () => {
 
           <div className="w-full max-w-xs">
             <Card className="h-full">
-              <CardBody className="rounded-medium">
-                <ScrollShadow className="w-full max-w-xs p-4" hideScrollBar>
+              <CardBody className="rounded-medium px-0">
+                <ScrollShadow className="w-full max-w-xs p-2" hideScrollBar>
                   <div className="flex flex-col gap-4">
                     <div className="flex flex-col gap-2">
                       <h2 className="font-medium text-default-500">

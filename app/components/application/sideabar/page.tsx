@@ -338,7 +338,7 @@ function SideBar() {
             />
           )}
           <ScrollShadow
-            className={`w-full h-full max-h-[415px]`}
+            className={`w-full h-full max-h-[400px]`}
             hideScrollBar
             size={0}
           >

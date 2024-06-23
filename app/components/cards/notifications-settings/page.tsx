@@ -30,7 +30,7 @@ interface CustomSwitchType extends SwitchProps {
 
 const CustomSwitch = ({ setting, switchColor }: CustomSwitchType) => {
   return (
-    <div className="flex items-center justify-between gap-2 rounded-medium bg-content2 p-4">
+    <div className="flex items-center justify-between gap-2 rounded-medium py-4">
       <div className="flex flex-col">
         <p className="text-medium">{setting.title}</p>
         <p className="text-small text-default-500">{setting.description}</p>
@@ -47,11 +47,11 @@ function NotificationsSettings() {
     "Manage your notification preferences"
   );
   const [cancelBtnColor, setCancelBtnColor] =
-    useState<ButtonProps["color"]>("default");
+    useState<ButtonProps["color"]>("danger");
   const [cancelbtnVariant, setCancelBtnVariant] =
-    useState<ButtonProps["variant"]>("bordered");
+    useState<ButtonProps["variant"]>("flat");
   const [continuebtnColor, setContinueBtnColor] =
-    useState<ButtonProps["color"]>("primary");
+    useState<ButtonProps["color"]>("secondary");
   const [continuebtnVariant, setContinueBtnVariant] =
     useState<ButtonProps["variant"]>("solid");
 
@@ -101,7 +101,7 @@ function NotificationsSettings() {
           variant="bordered"
           placeholder="Select a variant"
           disallowEmptySelection
-          defaultSelectedKeys={["bordered"]}
+          defaultSelectedKeys={["flat"]}
           className="max-w-xs"
           onChange={(e) => {
             setCancelBtnVariant(e.target.value as ButtonProps["variant"]);
@@ -123,7 +123,7 @@ function NotificationsSettings() {
           variant="bordered"
           placeholder="Select a color"
           disallowEmptySelection
-          defaultSelectedKeys={["default"]}
+          defaultSelectedKeys={["danger"]}
           className="max-w-xs"
           onChange={(e) => {
             setCancelBtnColor(e.target.value as ButtonProps["color"]);
@@ -162,7 +162,7 @@ function NotificationsSettings() {
           variant="bordered"
           placeholder="Select a color"
           disallowEmptySelection
-          defaultSelectedKeys={["primary"]}
+          defaultSelectedKeys={["secondary"]}
           className="max-w-xs"
           onChange={(e) => {
             setContinueBtnColor(e.target.value as ButtonProps["color"]);
@@ -187,7 +187,7 @@ function NotificationsSettings() {
         }}
       >
         <Card
-          className={`w-full ${
+          className={`w-full bg-transparent ${
             maxWidth === "375px"
               ? "max-w-[360px]"
               : maxWidth === "768px"

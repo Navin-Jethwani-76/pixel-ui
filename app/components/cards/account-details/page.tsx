@@ -30,11 +30,11 @@ function AccountDetails() {
   const [inputVariant, setInputVariant] =
     useState<InputProps["variant"]>("bordered");
   const [cancelBtnColor, setCancelBtnColor] =
-    useState<ButtonProps["color"]>("default");
+    useState<ButtonProps["color"]>("danger");
   const [cancelbtnVariant, setCancelBtnVariant] =
     useState<ButtonProps["variant"]>("bordered");
   const [continuebtnColor, setContinueBtnColor] =
-    useState<ButtonProps["color"]>("primary");
+    useState<ButtonProps["color"]>("secondary");
   const [continuebtnVariant, setContinueBtnVariant] =
     useState<ButtonProps["variant"]>("solid");
 
@@ -108,7 +108,7 @@ function AccountDetails() {
           variant="bordered"
           placeholder="Select a color"
           disallowEmptySelection
-          defaultSelectedKeys={["default"]}
+          defaultSelectedKeys={["danger"]}
           className="max-w-xs"
           onChange={(e) => {
             setCancelBtnColor(e.target.value as ButtonProps["color"]);
@@ -147,7 +147,7 @@ function AccountDetails() {
           variant="bordered"
           placeholder="Select a color"
           disallowEmptySelection
-          defaultSelectedKeys={["primary"]}
+          defaultSelectedKeys={["secondary"]}
           className="max-w-xs"
           onChange={(e) => {
             setContinueBtnColor(e.target.value as ButtonProps["color"]);

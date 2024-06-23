@@ -131,7 +131,7 @@ function SelectPlan() {
           }}
         >
           <Card
-            className={`w-full ${
+            className={`w-full bg-transparent ${
               maxWidth === "375px" ? "max-w-[360px]" : "max-w-sm"
             }`}
           >

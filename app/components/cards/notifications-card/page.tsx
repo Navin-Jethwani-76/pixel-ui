@@ -8,6 +8,7 @@ import {
   Checkbox,
   CheckboxGroup,
   Chip,
+  Divider,
   Link,
   ScrollShadow,
   Tab,
@@ -26,10 +27,10 @@ const Notifications: NotificationsType[] = [
     type: "unread",
     footer: (
       <div className="flex gap-2">
-        <Button size="sm" color="primary">
+        <Button size="sm" color="secondary">
           Accept
         </Button>
-        <Button size="sm" color="default" variant="flat">
+        <Button size="sm" color="danger" variant="flat">
           Decline
         </Button>
       </div>
@@ -88,10 +89,10 @@ const NotificationItem = ({
   withAvatar: boolean;
 }) => {
   return (
-    <>
+    <div className="flex flex-col mb-2 gap-2">
       <div
-        className={`flex flex-row gap-4 w-full border-b border-divider px-6 py-4 ${
-          notification.type == "unread" && "bg-primary-50/50"
+        className={`flex flex-row gap-4 w-full px-6 py-4 ${
+          notification.type == "unread" && "bg-secondary-50/50"
         }`}
       >
         {withAvatar && (
@@ -109,7 +110,8 @@ const NotificationItem = ({
           {notification.footer}
         </div>
       </div>
-    </>
+      <Divider />
+    </div>
   );
 };
 
@@ -151,7 +153,7 @@ function NotificationsCard() {
           }}
         >
           <Card
-            className={`w-full ${
+            className={`w-full bg-background ${
               maxWidth === "375px"
                 ? "max-w-[360px]"
                 : maxWidth === "768px"
@@ -164,13 +166,13 @@ function NotificationsCard() {
                 <h4 className="inline-block align-middle text-large font-medium">
                   Notifications
                 </h4>
-                <Button variant="light" color="primary" radius="full">
+                <Button variant="light" color="secondary" radius="full">
                   Mark all as read
                 </Button>
               </div>
               <Tabs
                 variant="underlined"
-                color="primary"
+                color="secondary"
                 aria-label="Notifications Options"
               >
                 {["All", "Unread", "Archived"].map((tabTitle) => {
@@ -200,7 +202,7 @@ function NotificationsCard() {
                       }
                       aria-label={tabTitle}
                     >
-                      <ScrollShadow hideScrollBar className="w-full h-80">
+                      <ScrollShadow hideScrollBar className="w-full h-[520px]">
                         {notifications.map((notification, index) => (
                           <NotificationItem
                             key={index}
@@ -213,14 +215,6 @@ function NotificationsCard() {
                   );
                 })}
               </Tabs>
-              <div className="flex justify-end gap-4">
-                <Button color="default" variant="light">
-                  Settings
-                </Button>
-                <Button color="default" variant="flat">
-                  Archive All
-                </Button>
-              </div>
             </CardBody>
           </Card>
         </div>

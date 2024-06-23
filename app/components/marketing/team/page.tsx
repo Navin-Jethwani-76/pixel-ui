@@ -134,8 +134,9 @@ const TeamMembers: Member[] = [
 
 const Team = () => {
   const [maxWidth, setMaxWidth] = useState<ViewProps["current"]>("100%");
-  const [btnColor, setBtnColor] = useState<ButtonProps["color"]>("secondary");
-  const [btnVariant, setBtnVariant] = useState<ButtonProps["variant"]>("solid");
+  const [btnColor, setBtnColor] = useState<ButtonProps["color"]>("primary");
+  const [btnVariant, setBtnVariant] =
+    useState<ButtonProps["variant"]>("bordered");
 
   const PreviewProps = () => {
     return (
@@ -193,26 +194,20 @@ const Team = () => {
           }}
         >
           <div className="flex max-w-4xl flex-col items-center pt-10 pb-4 h-full gap-6">
-            <div className="flex max-w-xl flex-col text-center px-4 gap-4">
+            <div className="flex max-w-xl flex-col text-center px-4 gap-2">
               <h2 className="text-large">We&#39;re hiring!</h2>
               <h1 className="text-4xl font-medium tracking-tight">
-                Meet our team.
+                Meet our team
               </h1>
-              <h2 className="text-large text-default-500">
-                Our philosophy is to build a great team and then empower them to
-                do great things.
-              </h2>
               <div className="flex w-full justify-center gap-2">
-                <Button variant="bordered">About Us</Button>
+                <Button variant="light">About Us</Button>
                 <Button variant={btnVariant} color={btnColor}>
                   Open positions
                 </Button>
               </div>
             </div>
             <ScrollShadow
-              className={`w-full ${
-                maxWidth == "375px" ? "max-h-[370px]" : "max-h-[400px]"
-              }`}
+              className={`w-full max-h-[500px]`}
               size={0}
               hideScrollBar
             >
